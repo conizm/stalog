@@ -118,7 +118,7 @@
         @media (min-width: 768px) {
             .md\:w-28 { width: 7rem; } .md\:h-28 { height: 7rem; } .md\:w-32 { width: 8rem; } .md\:h-24 { height: 6rem; } .md\:h-20 { height: 5rem; } .md\:w-12 { width: 3rem; } .md\:h-12 { height: 3rem; }
             .md\:border-2 { border-width: 2px; } .md\:border-\[3px\] { border-width: 3px; }
-            .md\:text-\[10px\] { font-size: 10px; } .md\:text-xs { font-size: 0.75rem; line-height: 1rem; } .md\:text-sm { font-size: 0.875rem; line-height: 1.25rem; } .md\:text-base { font-size: 1rem; line-height: 1.5rem; } .md\:text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+            .md\:text-\[9px\] { font-size: 9px; } .md\:text-\[10px\] { font-size: 10px; } .md\:text-xs { font-size: 0.75rem; line-height: 1rem; } .md\:text-sm { font-size: 0.875rem; line-height: 1.25rem; } .md\:text-base { font-size: 1rem; line-height: 1.5rem; } .md\:text-2xl { font-size: 1.5rem; line-height: 2rem; } .md\:text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
             .md\:top-8 { top: 2rem; } .md\:right-8 { right: 2rem; } .md\:gap-20 { gap: 5rem; }
             .md\:max-w-\[480px\] { max-width: 480px; }
         }
@@ -294,12 +294,10 @@
 
             const ITEMS_PER_SPREAD = 6;
 
-            // 日付の降順（新しい日付が先頭）に並び替える関数
             const sortRecordsDesc = (arr) => {
                 return [...arr].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
             };
 
-            // スクロールのロック制御
             useEffect(() => {
                 if (activeTab === 'journal' || activeTab === 'settings' || isModalOpen) {
                     document.body.style.overflow = 'hidden';
@@ -318,7 +316,6 @@
                 const saved = localStorage.getItem('zara-travel-log');
                 if (saved) {
                     const parsed = JSON.parse(saved);
-                    // 読み込み時に日付でソートしてセット
                     setRecords(sortRecordsDesc(parsed));
                 }
                 setIsLoaded(true);
@@ -343,7 +340,6 @@
                     style: generateStampStyle()
                 };
 
-                // 追加時に日付でソート
                 const newRecords = sortRecordsDesc([newRecord, ...records]);
                 
                 setRecords(newRecords);
@@ -375,7 +371,6 @@
                         const imported = JSON.parse(event.target.result);
                         if (Array.isArray(imported)) {
                             if (confirm("既存のデータを上書きしますか？")) {
-                                // インポート時にも日付でソート
                                 const sorted = sortRecordsDesc(imported);
                                 setRecords(sorted);
                                 localStorage.setItem('zara-travel-log', JSON.stringify(sorted));
@@ -400,7 +395,6 @@
                 setTimeout(() => { setCurrentPage(p => p - 1); setFlipState(null); }, 600);
             };
 
-            // タップ（クリック）でページをめくる処理
             const handleNotebookClick = (e) => {
                 const rect = e.currentTarget.getBoundingClientRect();
                 const x = e.clientX - rect.left;
@@ -453,8 +447,8 @@
                     {activeTab === 'journal' && (
                         <div className="w-full max-w-5xl flex flex-col flex-grow relative z-10 justify-center">
                             <header className="mb-8 mt-2 text-center relative">
-                                <p className="text-[9px] md:text-[10px] tracking-[0.3em] uppercase text-[#8c8a82] mb-2 font-sans">Personal Journal</p>
-                                <h1 className="text-2xl md:text-3xl tracking-widest uppercase font-light">Travel Log</h1>
+                                <p className="text-[8px] md:text-[9px] tracking-[0.3em] uppercase text-[#8c8a82] mb-2 font-sans">Personal Journal</p>
+                                <h1 className="text-xl md:text-2xl tracking-widest uppercase font-light">Travel Log</h1>
                                 <div className="w-8 h-[1px] bg-[#3b3a36] mx-auto mt-4"></div>
                             </header>
 
@@ -501,8 +495,8 @@
                     {activeTab === 'list' && (
                         <div className="w-full max-w-4xl bg-white shadow-2xl p-6 sm:p-12 border border-[#E5E2DA] animate-in fade-in duration-500 z-10 my-8">
                             <header className="mb-10 mt-4 text-center relative">
-                                <p className="text-[9px] tracking-[0.3em] uppercase text-[#8c8a82] mb-2 font-sans">Index</p>
-                                <h2 className="text-2xl md:text-3xl tracking-widest uppercase font-light">destinations</h2>
+                                <p className="text-[8px] md:text-[9px] tracking-[0.3em] uppercase text-[#8c8a82] mb-2 font-sans">Index</p>
+                                <h2 className="text-xl md:text-2xl tracking-widest uppercase font-light">destinations</h2>
                                 <div className="w-8 h-[1px] bg-[#3b3a36] mx-auto mt-4 mb-4"></div>
                                 <p className="text-[8px] sm:text-[9px] text-[#b5b3aa] font-sans tracking-widest uppercase absolute w-full text-center bottom-[-24px]">Long press an item to delete</p>
                             </header>
@@ -519,8 +513,8 @@
                         <div className="w-full max-w-5xl flex flex-col flex-grow relative z-10 justify-center animate-in fade-in duration-500">
                             <div className="w-full max-w-4xl bg-white shadow-2xl p-6 sm:p-12 border border-[#E5E2DA] mx-auto">
                                 <header className="mb-12 mt-4 text-center">
-                                    <p className="text-[9px] tracking-[0.3em] uppercase text-[#8c8a82] mb-2 font-sans">Options</p>
-                                    <h2 className="text-2xl md:text-3xl tracking-widest uppercase font-light">Settings</h2>
+                                    <p className="text-[8px] md:text-[9px] tracking-[0.3em] uppercase text-[#8c8a82] mb-2 font-sans">Options</p>
+                                    <h2 className="text-xl md:text-2xl tracking-widest uppercase font-light">Settings</h2>
                                     <div className="w-8 h-[1px] bg-[#3b3a36] mx-auto mt-4"></div>
                                 </header>
                                 <div className="max-w-md mx-auto w-full space-y-8 pb-4">
