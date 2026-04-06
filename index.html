@@ -30,8 +30,7 @@
         /* 抽出済みの超高速CSS (Tailwind代替) */
         *, ::before, ::after { box-sizing: border-box; border-width: 0; border-style: solid; border-color: currentColor; }
         body { margin: 0; line-height: inherit; font-family: 'Playfair Display', 'Noto Serif JP', serif; background-color: #F9F8F6; -webkit-tap-highlight-color: transparent; }
-        /* border: none; を削除し、枠線が正しく表示されるように修正 */
-        input, select, button { margin: 0; padding: 0; font-family: inherit; font-size: inherit; line-height: inherit; color: inherit; background: transparent; cursor: pointer; }
+        input, select, button { margin: 0; padding: 0; font-family: inherit; font-size: inherit; line-height: inherit; color: inherit; background: transparent; border: none; cursor: pointer; }
         input:focus, select:focus, button:focus { outline: none; }
         h1, h2, h3, p { margin: 0; font-weight: inherit; font-size: inherit; }
 
@@ -289,11 +288,25 @@
             const [date, setDate] = useState(() => new Date().toISOString().split('T')[0]);
             const [currentPage, setCurrentPage] = useState(0);
             const [flipState, setFlipState] = useState(null);
-            const [touchStart, setTouchStart] = useState(null);
             const [activeTab, setActiveTab] = useState('journal');
             const fileInputRef = useRef(null);
 
             const ITEMS_PER_SPREAD = 6;
+
+            // スクロールのロック制御（journalとsettings画面、またはモーダルを開いている時）
+            useEffect(() => {
+                if (activeTab === 'journal' || activeTab === 'settings' || isModalOpen) {
+                    document.body.style.overflow = 'hidden';
+                    document.documentElement.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                    document.documentElement.style.overflow = '';
+                }
+                return () => {
+                    document.body.style.overflow = '';
+                    document.documentElement.style.overflow = '';
+                };
+            }, [activeTab, isModalOpen]);
 
             useEffect(() => {
                 const saved = localStorage.getItem('zara-travel-log');
@@ -373,14 +386,15 @@
                 setTimeout(() => { setCurrentPage(p => p - 1); setFlipState(null); }, 600);
             };
 
-            const handleNotebookTouchStart = (e) => {
-                setTouchStart({ x: e.touches[0].clientX });
-            };
-            const handleNotebookTouchEnd = (e) => {
-                if (!touchStart) return;
-                const d = touchStart.x - e.changedTouches[0].clientX;
-                if (d > 50) nextPage(); else if (d < -50) prevPage();
-                setTouchStart(null);
+            // タップ（クリック）でページをめくる処理
+            const handleNotebookClick = (e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                if (x > rect.width / 2) {
+                    nextPage();
+                } else {
+                    prevPage();
+                }
             };
 
             const stampPositions = [
@@ -394,15 +408,15 @@
                 const pageRecords = records.slice(start, start + ITEMS_PER_SPREAD);
 
                 return (
-                    <div className="absolute inset-0 overflow-hidden w-full h-full">
+                    <div className="absolute inset-0 overflow-hidden w-full h-full pointer-events-none">
                         {pageRecords.length === 0 && pageIndex === 0 ? (
                             <div className="absolute inset-0 flex flex-col justify-center items-center text-[#8c8a82] opacity-50 px-4 text-center">
                                 <p className="text-xs tracking-widest uppercase mb-2">No entries yet</p>
                                 <p className="text-[10px] font-sans mb-1">Click + to add a stamp.</p>
+                                <p className="text-[8px] font-sans opacity-70">Tap right to flip page.</p>
                             </div>
                         ) : (
                             pageRecords.map((record, idx) => (
-                                // ここで確実にxy両方の中心を合わせるように修正しました
                                 <div key={record.id} className="absolute flex justify-center items-center" style={{ left: stampPositions[idx % 6].left, top: stampPositions[idx % 6].top, transform: 'translate(-50%, -50%)' }}>
                                     <Stamp record={record} />
                                 </div>
@@ -431,9 +445,8 @@
                             </header>
 
                             <div className="relative w-full px-2 sm:px-8 flex items-center justify-center flex-grow">
-                                <div className="w-full max-w-[360px] sm:max-w-[420px] md:max-w-[480px] aspect-[3/4] min-h-[450px] max-h-[75vh] bg-white shadow-2xl rounded-r-xl rounded-l-sm relative border border-[#E5E2DA] border-l-[#d5d2c4] overflow-hidden mx-auto" 
-                                    onTouchStart={handleNotebookTouchStart} 
-                                    onTouchEnd={handleNotebookTouchEnd}
+                                <div className="w-full max-w-[360px] sm:max-w-[420px] md:max-w-[480px] aspect-[3/4] min-h-[450px] max-h-[75vh] bg-white shadow-2xl rounded-r-xl rounded-l-sm relative border border-[#E5E2DA] border-l-[#d5d2c4] overflow-hidden mx-auto cursor-pointer" 
+                                    onClick={handleNotebookClick}
                                 >
                                     
                                     <div className="absolute inset-0 z-10" style={{ transformStyle: 'preserve-3d' }}>
@@ -489,25 +502,27 @@
                     )}
 
                     {activeTab === 'settings' && (
-                        <div className="w-full max-w-4xl bg-white shadow-2xl p-6 sm:p-12 border border-[#E5E2DA] animate-in fade-in duration-500 z-10 my-8">
-                            <header className="mb-12 mt-4 text-center">
-                                <p className="text-[9px] tracking-[0.3em] uppercase text-[#8c8a82] mb-2 font-sans">Options</p>
-                                <h2 className="text-2xl md:text-3xl tracking-widest uppercase font-light">Settings</h2>
-                                <div className="w-8 h-[1px] bg-[#3b3a36] mx-auto mt-4"></div>
-                            </header>
-                            <div className="max-w-md mx-auto w-full space-y-12 pb-12">
-                                <section className="space-y-6">
-                                    <h3 className="text-[10px] uppercase tracking-[0.2em] text-[#8c8a82] border-b border-[#E5E2DA] pb-2 font-sans">Data Management</h3>
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                        <button onClick={handleExport} className="flex items-center justify-center gap-3 py-3 border border-[#3b3a36] text-[#3b3a36] uppercase tracking-widest text-[10px] font-sans hover:bg-[#3b3a36] hover:text-white transition-all duration-500"><Icon name="download" size={14} />Backup</button>
-                                        <button onClick={() => fileInputRef.current?.click()} className="flex items-center justify-center gap-3 py-3 border border-[#3b3a36] text-[#3b3a36] uppercase tracking-widest text-[10px] font-sans hover:bg-[#3b3a36] hover:text-white transition-all duration-500"><Icon name="upload" size={14} />Restore</button>
-                                        <input type="file" ref={fileInputRef} onChange={handleImport} accept=".json" className="hidden" />
-                                    </div>
-                                </section>
-                                <section className="space-y-4 pt-4">
-                                    <h3 className="text-[10px] uppercase tracking-[0.2em] text-[#8c8a82] border-b border-[#E5E2DA] pb-2 font-sans">About</h3>
-                                    <p className="text-[11px] text-[#b5b3aa] font-sans leading-relaxed">Travel Log v2.0 — Your data is stored locally. Use Backup to save your journey before switching devices.</p>
-                                </section>
+                        <div className="w-full max-w-5xl flex flex-col flex-grow relative z-10 justify-center animate-in fade-in duration-500">
+                            <div className="w-full max-w-4xl bg-white shadow-2xl p-6 sm:p-12 border border-[#E5E2DA] mx-auto">
+                                <header className="mb-12 mt-4 text-center">
+                                    <p className="text-[9px] tracking-[0.3em] uppercase text-[#8c8a82] mb-2 font-sans">Options</p>
+                                    <h2 className="text-2xl md:text-3xl tracking-widest uppercase font-light">Settings</h2>
+                                    <div className="w-8 h-[1px] bg-[#3b3a36] mx-auto mt-4"></div>
+                                </header>
+                                <div className="max-w-md mx-auto w-full space-y-8 pb-4">
+                                    <section className="space-y-6">
+                                        <h3 className="text-[10px] uppercase tracking-[0.2em] text-[#8c8a82] border-b border-[#E5E2DA] pb-2 font-sans">Data Management</h3>
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                            <button onClick={handleExport} className="flex items-center justify-center gap-3 py-3 border border-[#3b3a36] text-[#3b3a36] uppercase tracking-widest text-[10px] font-sans hover:bg-[#3b3a36] hover:text-white transition-all duration-500"><Icon name="download" size={14} />Backup</button>
+                                            <button onClick={() => fileInputRef.current?.click()} className="flex items-center justify-center gap-3 py-3 border border-[#3b3a36] text-[#3b3a36] uppercase tracking-widest text-[10px] font-sans hover:bg-[#3b3a36] hover:text-white transition-all duration-500"><Icon name="upload" size={14} />Restore</button>
+                                            <input type="file" ref={fileInputRef} onChange={handleImport} accept=".json" className="hidden" />
+                                        </div>
+                                    </section>
+                                    <section className="space-y-4 pt-4">
+                                        <h3 className="text-[10px] uppercase tracking-[0.2em] text-[#8c8a82] border-b border-[#E5E2DA] pb-2 font-sans">About</h3>
+                                        <p className="text-[11px] text-[#b5b3aa] font-sans leading-relaxed">Travel Log v2.0 — Your data is stored locally. Use Backup to save your journey before switching devices.</p>
+                                    </section>
+                                </div>
                             </div>
                         </div>
                     )}
