@@ -293,7 +293,12 @@
 
             const ITEMS_PER_SPREAD = 6;
 
-            // スクロールのロック制御（journalとsettings画面、またはモーダルを開いている時）
+            // 日付の降順（新しい日付が先頭）に並び替える関数
+            const sortRecordsDesc = (arr) => {
+                return [...arr].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+            };
+
+            // スクロールのロック制御
             useEffect(() => {
                 if (activeTab === 'journal' || activeTab === 'settings' || isModalOpen) {
                     document.body.style.overflow = 'hidden';
@@ -310,7 +315,11 @@
 
             useEffect(() => {
                 const saved = localStorage.getItem('zara-travel-log');
-                if (saved) setRecords(JSON.parse(saved));
+                if (saved) {
+                    const parsed = JSON.parse(saved);
+                    // 読み込み時に日付でソートしてセット
+                    setRecords(sortRecordsDesc(parsed));
+                }
                 setIsLoaded(true);
                 
                 const loader = document.getElementById('initial-loader');
@@ -333,7 +342,9 @@
                     style: generateStampStyle()
                 };
 
-                const newRecords = [newRecord, ...records];
+                // 追加時に日付でソート
+                const newRecords = sortRecordsDesc([newRecord, ...records]);
+                
                 setRecords(newRecords);
                 localStorage.setItem('zara-travel-log', JSON.stringify(newRecords));
                 setCountry(''); setCustomCountry(''); setSubRegion(''); setDate(new Date().toISOString().split('T')[0]);
@@ -363,8 +374,10 @@
                         const imported = JSON.parse(event.target.result);
                         if (Array.isArray(imported)) {
                             if (confirm("既存のデータを上書きしますか？")) {
-                                setRecords(imported);
-                                localStorage.setItem('zara-travel-log', JSON.stringify(imported));
+                                // インポート時にも日付でソート
+                                const sorted = sortRecordsDesc(imported);
+                                setRecords(sorted);
+                                localStorage.setItem('zara-travel-log', JSON.stringify(sorted));
                                 setCurrentPage(0); setActiveTab('journal');
                             }
                         }
