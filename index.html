@@ -2,7 +2,8 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- viewport-fit=cover を追加してセーフエリアを有効化 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Travel Log — Personal Journal</title>
 
     <link rel="icon" href="stalog_logo_favi.png">
@@ -540,7 +541,11 @@
                         </div>
                     )}
 
-                    <nav className="fixed bottom-0 left-0 right-0 bg-[#F9F8F6]/80 backdrop-blur-md border-t border-[#DEDCD5] flex justify-center py-4 sm:py-6 z-40">
+                    {/* セーフエリアに対応させたフッターメニュー */}
+                    <nav 
+                        className="fixed bottom-0 left-0 right-0 bg-[#F9F8F6]/80 backdrop-blur-md border-t border-[#DEDCD5] flex justify-center pt-4 sm:pt-6 z-40"
+                        style={{ paddingBottom: 'calc(1rem + env(safe-area-inset-bottom))' }}
+                    >
                         <div className="flex gap-12 md:gap-20 text-[10px] md:text-xs tracking-[0.2em] font-sans">
                             {['journal', 'destinations', 'settings'].map(t => (
                                 <button key={t} onClick={() => setActiveTab(t === 'destinations' ? 'list' : t)} className={`pb-1 transition-colors ${activeTab === (t === 'destinations' ? 'list' : t) ? 'border-b border-[#3b3a36] text-[#3b3a36]' : 'text-[#8c8a82] hover:text-[#3b3a36]'}`}>
