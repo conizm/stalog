@@ -312,9 +312,7 @@
                                 <div className="w-8 h-[1px] bg-[#3b3a36] mx-auto mt-4"></div>
                             </header>
 
-                            <div className="relative w-full px-12 sm:px-16 flex items-center justify-center flex-grow">
-                                <button onClick={prevPage} disabled={currentPage === 0 || flipState} className="absolute left-1 sm:left-4 p-2 text-[#8c8a82] hover:text-[#3b3a36] disabled:opacity-20 z-20"><Icon name="chevronLeft" size={32} strokeWidth={1} /></button>
-                                
+                            <div className="relative w-full px-4 sm:px-8 flex items-center justify-center flex-grow">
                                 {/* 単ページデザインに変更 */}
                                 <div className="w-full max-w-[360px] sm:max-w-[420px] md:max-w-[480px] aspect-[3/4] min-h-[450px] max-h-[75vh] bg-white shadow-2xl rounded-r-xl rounded-l-sm flex relative border border-[#E5E2DA] border-l-[#d5d2c4] overflow-hidden mx-auto" onTouchStart={e => setTouchStart({x: e.touches[0].clientX})} onTouchEnd={e => {
                                     if (!touchStart) return;
@@ -357,7 +355,6 @@
                                     <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-[#d5d2c4] z-40 mix-blend-multiply"></div>
                                     <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-[rgba(0,0,0,0.06)] to-transparent z-40 pointer-events-none"></div>
                                 </div>
-                                <button onClick={nextPage} disabled={currentPage === totalPages - 1 || records.length === 0 || flipState} className="absolute right-1 sm:right-4 p-2 text-[#8c8a82] hover:text-[#3b3a36] disabled:opacity-20 z-20"><Icon name="chevronRight" size={32} strokeWidth={1} /></button>
                             </div>
                         </div>
                     )}
@@ -366,7 +363,7 @@
                         <div className="w-full max-w-4xl bg-white shadow-2xl p-6 sm:p-12 border border-[#E5E2DA] animate-in fade-in duration-500 z-10 my-8">
                             <header className="mb-12 mt-4 text-center">
                                 <p className="text-[9px] tracking-[0.3em] uppercase text-[#8c8a82] mb-2 font-sans">Index</p>
-                                <h2 className="text-2xl md:text-3xl tracking-widest uppercase font-light">destinations</h2>
+                                <h2 className="text-2xl md:text-3xl tracking-widest uppercase font-light">Destinations</h2>
                                 <div className="w-8 h-[1px] bg-[#3b3a36] mx-auto mt-4"></div>
                             </header>
                             <div className="grid grid-cols-1 gap-4 max-w-2xl mx-auto w-full">
@@ -376,8 +373,8 @@
                                         <div className="flex items-baseline gap-4">
                                             <span className="text-[10px] text-[#b5b3aa] font-sans w-4 text-right">{records.length - i}</span>
                                             <div className="flex flex-col sm:flex-row sm:items-baseline gap-1">
-                                                <span className="text-lg tracking-wider uppercase">{r.country}</span>
-                                                {r.subRegion && <span className="text-xs italic text-[#8c8a82]">{r.subRegion}</span>}
+                                                <span className="text-sm sm:text-base md:text-lg tracking-wider uppercase">{r.country}</span>
+                                                {r.subRegion && <span className="text-[10px] sm:text-xs italic text-[#8c8a82]">{r.subRegion}</span>}
                                             </div>
                                         </div>
                                         <div className="flex items-center gap-6">
@@ -416,9 +413,9 @@
 
                     <nav className="fixed bottom-0 left-0 right-0 bg-[#F9F8F6]/80 backdrop-blur-md border-t border-[#DEDCD5] flex justify-center py-4 sm:py-6 z-40">
                         <div className="flex gap-12 md:gap-20 text-[10px] md:text-xs uppercase tracking-[0.2em] font-sans">
-                            {['journal', 'list', 'settings'].map(t => (
-                                <button key={t} onClick={() => setActiveTab(t)} className={`pb-1 transition-colors ${activeTab === t ? 'border-b border-[#3b3a36] text-[#3b3a36]' : 'text-[#8c8a82] hover:text-[#3b3a36]'}`}>
-                                    {t === 'list' ? 'Destinations' : t}
+                            {['journal', 'destinations', 'settings'].map(t => (
+                                <button key={t} onClick={() => setActiveTab(t === 'destinations' ? 'list' : t)} className={`pb-1 transition-colors ${activeTab === (t === 'destinations' ? 'list' : t) ? 'border-b border-[#3b3a36] text-[#3b3a36]' : 'text-[#8c8a82] hover:text-[#3b3a36]'}`}>
+                                    {t}
                                 </button>
                             ))}
                         </div>
