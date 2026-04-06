@@ -27,13 +27,13 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     
-    <!-- Scripts (安全かつ最速の構成) -->
+    <!-- Scripts -->
     <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- 独自のCSS (アニメーションやスクロールバーなどの特殊設定のみここに残す) -->
+    <!-- 独自のCSS -->
     <style>
         body {
             font-family: 'Playfair Display', 'Noto Serif JP', serif;
@@ -44,7 +44,7 @@
         }
         .font-sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
         
-        /* ページめくりアニメーション */
+        /* 単ページめくりアニメーション (左端を軸にして回転) */
         .page-flip-next {
             animation: flipNext 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
             transform-origin: left center;
@@ -56,12 +56,12 @@
         }
         .page-flip-prev {
             animation: flipPrev 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-            transform-origin: right center;
+            transform-origin: left center;
             transform-style: preserve-3d;
         }
         @keyframes flipPrev {
-            0% { transform: perspective(1200px) rotateY(0deg); }
-            100% { transform: perspective(1200px) rotateY(180deg); }
+            0% { transform: perspective(1200px) rotateY(-180deg); }
+            100% { transform: perspective(1200px) rotateY(0deg); }
         }
         .page-front, .page-back {
             position: absolute;
@@ -78,7 +78,6 @@
         @keyframes spin { to { transform: rotate(360deg); } }
         @keyframes pulse-opacity { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
 
-        /* React読み込み完了後にローディング画面をフェードアウトするクラス */
         .fade-out {
             animation: fadeOut 0.5s forwards;
         }
@@ -88,7 +87,6 @@
     </style>
 </head>
 <body>
-    <!-- Reactが起動するまでの間、即座に表示されるローディング画面 -->
     <div id="initial-loader" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: #F9F8F6; z-index: 9999;">
         <div style="width: 24px; height: 24px; border: 2px solid #E5E2DA; border-top-color: #3b3a36; border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 24px;"></div>
         <p style="font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: #8c8a82; animation: pulse-opacity 2s ease-in-out infinite;">
@@ -96,7 +94,6 @@
         </p>
     </div>
 
-    <!-- Reactの描画領域 -->
     <div id="root"></div>
 
     <script type="text/babel">
@@ -108,7 +105,6 @@
         const US_STATES = ["New York", "California", "Hawaii", "Florida", "Texas", "Illinois", "Pennsylvania", "Ohio", "Georgia", "North Carolina", "Michigan", "New Jersey", "Virginia", "Washington", "Arizona", "Massachusetts", "Tennessee", "Indiana", "Missouri", "Maryland", "Wisconsin", "Colorado", "Minnesota", "South Carolina", "Alabama", "Louisiana", "Kentucky", "Oregon", "Oklahoma", "Connecticut", "Utah", "Iowa", "Nevada", "Arkansas", "Mississippi", "Kansas", "New Mexico", "Nebraska", "Idaho", "West Virginia", "Others"];
         const CA_PROVINCES = ["Ontario", "Quebec", "British Columbia", "Alberta", "Manitoba", "Saskatchewan", "Nova Scotia", "New Brunswick", "Newfoundland and Labrador", "Prince Edward Island"];
 
-        // --- Helpers ---
         const formatDate = (dateString) => {
             const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
             const d = new Date(dateString);
@@ -125,7 +121,6 @@
             };
         };
 
-        // --- Icons ---
         const Icon = ({ name, size = 16, strokeWidth = 1.5 }) => {
             const icons = {
                 plus: <path d="M12 5v14M5 12h14" />,
@@ -142,7 +137,6 @@
             );
         };
 
-        // --- Stamp Component ---
         const Stamp = ({ record, onRemove }) => {
             const [isHovered, setIsHovered] = useState(false);
             const { type, rotation, colorClass } = record.style;
@@ -176,7 +170,6 @@
             );
         };
 
-        // --- Main App ---
         function App() {
             const [records, setRecords] = useState([]);
             const [isLoaded, setIsLoaded] = useState(false);
@@ -191,14 +184,14 @@
             const [activeTab, setActiveTab] = useState('journal');
             const fileInputRef = useRef(null);
 
-            const ITEMS_PER_SPREAD = 12;
+            // 単ページ表示のため、1ページあたりのスタンプ数を6個に変更
+            const ITEMS_PER_SPREAD = 6;
 
             useEffect(() => {
                 const saved = localStorage.getItem('zara-travel-log');
                 if (saved) setRecords(JSON.parse(saved));
                 setIsLoaded(true);
                 
-                // Reactの準備が完了したら、ローディング画面をフェードアウトして消す
                 const loader = document.getElementById('initial-loader');
                 if (loader) {
                     loader.classList.add('fade-out');
@@ -278,20 +271,20 @@
                 { left: '28%', top: '78%' }, { left: '72%', top: '78%' },
             ];
 
-            const PageContent = ({ pageIndex, isLeft }) => {
+            // 1ページ分の中身だけを描画するコンポーネント
+            const PageContent = ({ pageIndex }) => {
                 const start = pageIndex * ITEMS_PER_SPREAD;
                 const pageRecords = records.slice(start, start + ITEMS_PER_SPREAD);
-                const sideRecords = isLeft ? pageRecords.slice(0, 6) : pageRecords.slice(6, 12);
 
                 return (
                     <div className="absolute inset-0 overflow-hidden">
-                        {sideRecords.length === 0 && pageIndex === 0 && isLeft ? (
+                        {pageRecords.length === 0 && pageIndex === 0 ? (
                             <div className="absolute inset-0 flex flex-col justify-center items-center text-[#8c8a82] opacity-50 px-4 text-center">
                                 <p className="text-xs tracking-widest uppercase mb-2">No entries yet</p>
                                 <p className="text-[10px] font-sans">Click + to add a stamp.</p>
                             </div>
                         ) : (
-                            sideRecords.map((record, idx) => (
+                            pageRecords.map((record, idx) => (
                                 <div key={record.id} className="absolute flex justify-center items-center -translate-x-1/2 -translate-y-1/2" style={{ left: stampPositions[idx % 6].left, top: stampPositions[idx % 6].top }}>
                                     <Stamp record={record} onRemove={handleRemove} />
                                 </div>
@@ -319,36 +312,52 @@
                                 <div className="w-8 h-[1px] bg-[#3b3a36] mx-auto mt-4"></div>
                             </header>
 
-                            <div className="relative w-full px-2 sm:px-12 flex items-center justify-center flex-grow">
-                                <button onClick={prevPage} disabled={currentPage === 0 || flipState} className="absolute left-0 sm:left-2 p-1 sm:p-2 text-[#8c8a82] hover:text-[#3b3a36] disabled:opacity-20 z-20"><Icon name="chevronLeft" size={32} strokeWidth={1} /></button>
-                                <div className="w-full aspect-[4/5] sm:aspect-[4/3] md:aspect-[3/2] min-h-[450px] max-h-[75vh] bg-white shadow-2xl rounded-sm flex relative border border-[#E5E2DA] overflow-hidden mx-auto" onTouchStart={e => setTouchStart({x: e.touches[0].clientX})} onTouchEnd={e => {
+                            <div className="relative w-full px-12 sm:px-16 flex items-center justify-center flex-grow">
+                                <button onClick={prevPage} disabled={currentPage === 0 || flipState} className="absolute left-1 sm:left-4 p-2 text-[#8c8a82] hover:text-[#3b3a36] disabled:opacity-20 z-20"><Icon name="chevronLeft" size={32} strokeWidth={1} /></button>
+                                
+                                {/* 単ページデザインに変更 */}
+                                <div className="w-full max-w-[360px] sm:max-w-[420px] md:max-w-[480px] aspect-[3/4] min-h-[450px] max-h-[75vh] bg-white shadow-2xl rounded-r-xl rounded-l-sm flex relative border border-[#E5E2DA] border-l-[#d5d2c4] overflow-hidden mx-auto" onTouchStart={e => setTouchStart({x: e.touches[0].clientX})} onTouchEnd={e => {
                                     if (!touchStart) return;
                                     const d = touchStart.x - e.changedTouches[0].clientX;
                                     if (d > 50) nextPage(); else if (d < -50) prevPage();
                                 }}>
+                                    
                                     <div className="flex w-full h-full relative z-10" style={{ transformStyle: 'preserve-3d' }}>
-                                        <div className="w-1/2 h-full relative bg-white border-r border-[#e0ddcd] shadow-[inset_-10px_0_15px_-10px_rgba(0,0,0,0.05)]"><PageContent pageIndex={flipState?.direction==='next'?flipState.from:flipState?.to??currentPage} isLeft={true} /></div>
-                                        <div className="w-1/2 h-full relative bg-white shadow-[inset_10px_0_15px_-10px_rgba(0,0,0,0.05)]"><PageContent pageIndex={flipState?.direction==='next'?flipState.to:flipState?.from??currentPage} isLeft={false} /></div>
+                                        <div className="w-full h-full relative bg-white shadow-[inset_15px_0_20px_-15px_rgba(0,0,0,0.05)]">
+                                            <PageContent pageIndex={flipState?.direction === 'next' ? flipState.to : (flipState?.direction === 'prev' ? flipState.from : currentPage)} />
+                                        </div>
                                     </div>
+
+                                    {/* めくりアニメーションレイヤー */}
                                     {flipState && (
                                         <div className="absolute inset-0 flex z-30 pointer-events-none perspective-[1200px]">
                                             {flipState.direction === 'next' ? (
-                                                <div className="absolute right-0 w-1/2 h-full page-flip-next">
-                                                    <div className="page-front bg-white shadow-[inset_10px_0_15px_-10px_rgba(0,0,0,0.05)]"><PageContent pageIndex={flipState.from} isLeft={false} /></div>
-                                                    <div className="page-back bg-white border-r border-[#e0ddcd] shadow-[inset_-10px_0_15px_-10px_rgba(0,0,0,0.05)]"><PageContent pageIndex={flipState.to} isLeft={true} /></div>
+                                                <div className="absolute inset-0 page-flip-next">
+                                                    <div className="page-front bg-white shadow-[inset_15px_0_20px_-15px_rgba(0,0,0,0.05)]">
+                                                        <PageContent pageIndex={flipState.from} />
+                                                    </div>
+                                                    <div className="page-back bg-white border-l border-[#e0ddcd] shadow-[inset_-15px_0_20px_-15px_rgba(0,0,0,0.05)]">
+                                                        {/* 裏面は白紙 */}
+                                                    </div>
                                                 </div>
                                             ) : (
-                                                <div className="absolute left-0 w-1/2 h-full page-flip-prev">
-                                                    <div className="page-front bg-white border-r border-[#e0ddcd] shadow-[inset_-10px_0_15px_-10px_rgba(0,0,0,0.05)]"><PageContent pageIndex={flipState.from} isLeft={true} /></div>
-                                                    <div className="page-back bg-white shadow-[inset_10px_0_15px_-10px_rgba(0,0,0,0.05)]"><PageContent pageIndex={flipState.to} isLeft={false} /></div>
+                                                <div className="absolute inset-0 page-flip-prev">
+                                                    <div className="page-front bg-white shadow-[inset_15px_0_20px_-15px_rgba(0,0,0,0.05)]">
+                                                        <PageContent pageIndex={flipState.to} />
+                                                    </div>
+                                                    <div className="page-back bg-white border-l border-[#e0ddcd] shadow-[inset_-15px_0_20px_-15px_rgba(0,0,0,0.05)]">
+                                                        {/* 裏面は白紙 */}
+                                                    </div>
                                                 </div>
                                             )}
                                         </div>
                                     )}
-                                    <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-[#d5d2c4] -translate-x-1/2 z-40 mix-blend-multiply"></div>
-                                    <div className="absolute left-1/2 top-0 bottom-0 w-6 bg-gradient-to-r from-[rgba(0,0,0,0.03)] via-transparent to-[rgba(0,0,0,0.03)] -translate-x-1/2 z-40"></div>
+
+                                    {/* バインダー（左の綴じ目）の影 */}
+                                    <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-[#d5d2c4] z-40 mix-blend-multiply"></div>
+                                    <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-[rgba(0,0,0,0.06)] to-transparent z-40 pointer-events-none"></div>
                                 </div>
-                                <button onClick={nextPage} disabled={currentPage === totalPages - 1 || records.length === 0 || flipState} className="absolute right-0 sm:right-2 p-1 sm:p-2 text-[#8c8a82] hover:text-[#3b3a36] disabled:opacity-20 z-20"><Icon name="chevronRight" size={32} strokeWidth={1} /></button>
+                                <button onClick={nextPage} disabled={currentPage === totalPages - 1 || records.length === 0 || flipState} className="absolute right-1 sm:right-4 p-2 text-[#8c8a82] hover:text-[#3b3a36] disabled:opacity-20 z-20"><Icon name="chevronRight" size={32} strokeWidth={1} /></button>
                             </div>
                         </div>
                     )}
@@ -357,7 +366,7 @@
                         <div className="w-full max-w-4xl bg-white shadow-2xl p-6 sm:p-12 border border-[#E5E2DA] animate-in fade-in duration-500 z-10 my-8">
                             <header className="mb-12 mt-4 text-center">
                                 <p className="text-[9px] tracking-[0.3em] uppercase text-[#8c8a82] mb-2 font-sans">Index</p>
-                                <h2 className="text-2xl md:text-3xl tracking-widest uppercase font-light">Destinations</h2>
+                                <h2 className="text-2xl md:text-3xl tracking-widest uppercase font-light">destinations</h2>
                                 <div className="w-8 h-[1px] bg-[#3b3a36] mx-auto mt-4"></div>
                             </header>
                             <div className="grid grid-cols-1 gap-4 max-w-2xl mx-auto w-full">
