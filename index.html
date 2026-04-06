@@ -30,7 +30,8 @@
         /* 抽出済みの超高速CSS (Tailwind代替) */
         *, ::before, ::after { box-sizing: border-box; border-width: 0; border-style: solid; border-color: currentColor; }
         body { margin: 0; line-height: inherit; font-family: 'Playfair Display', 'Noto Serif JP', serif; background-color: #F9F8F6; -webkit-tap-highlight-color: transparent; }
-        input, select, button { margin: 0; padding: 0; font-family: inherit; font-size: inherit; line-height: inherit; color: inherit; background: transparent; border: none; cursor: pointer; }
+        /* border: none; を削除し、枠線が正しく表示されるように修正 */
+        input, select, button { margin: 0; padding: 0; font-family: inherit; font-size: inherit; line-height: inherit; color: inherit; background: transparent; cursor: pointer; }
         input:focus, select:focus, button:focus { outline: none; }
         h1, h2, h3, p { margin: 0; font-weight: inherit; font-size: inherit; }
 
@@ -187,42 +188,9 @@
             );
         };
 
-        const Stamp = ({ record, onRemove }) => {
+        const Stamp = ({ record }) => {
             const [isHovered, setIsHovered] = useState(false);
             const { type, rotation, colorClass } = record.style;
-            
-            const timerRef = useRef(null);
-            const posRef = useRef(null);
-
-            const handlePressStart = (e) => {
-                posRef.current = { 
-                    x: e.touches ? e.touches[0].clientX : e.clientX, 
-                    y: e.touches ? e.touches[0].clientY : e.clientY 
-                };
-                timerRef.current = setTimeout(() => {
-                    if (confirm("Delete this stamp?")) onRemove(record.id);
-                }, 600); // 0.6秒で長押し判定
-            };
-
-            const handlePressMove = (e) => {
-                if (!posRef.current || !timerRef.current) return;
-                const currentX = e.touches ? e.touches[0].clientX : e.clientX;
-                const currentY = e.touches ? e.touches[0].clientY : e.clientY;
-                const dx = currentX - posRef.current.x;
-                const dy = currentY - posRef.current.y;
-                if (Math.abs(dx) > 10 || Math.abs(dy) > 10) {
-                    clearTimeout(timerRef.current);
-                    timerRef.current = null;
-                }
-            };
-
-            const handlePressEnd = () => {
-                if (timerRef.current) {
-                    clearTimeout(timerRef.current);
-                    timerRef.current = null;
-                }
-                posRef.current = null;
-            };
             
             let shapeClass = "";
             if (type.includes('circle')) shapeClass = `rounded-full w-16 h-16 sm:w-20 sm:h-20 md:w-28 md:h-28 flex flex-col justify-center items-center ${type.includes('single') ? 'border md:border-2' : 'border-[2px] md:border-[3px] border-double'}`;
@@ -237,16 +205,10 @@
 
             return (
                 <div 
-                    className="relative flex justify-center items-center p-2 sm:p-4 transition-transform duration-500 select-none cursor-pointer" 
+                    className="relative flex justify-center items-center p-2 sm:p-4 transition-transform duration-500 select-none" 
                     style={{ transform: `rotate(${rotation}deg) scale(${isHovered ? 1.05 : 1}) translateZ(0)` }}
                     onMouseEnter={() => setIsHovered(true)}
-                    onMouseLeave={() => { setIsHovered(false); handlePressEnd(); }}
-                    onTouchStart={handlePressStart}
-                    onTouchMove={handlePressMove}
-                    onTouchEnd={handlePressEnd}
-                    onMouseDown={handlePressStart}
-                    onMouseMove={handlePressMove}
-                    onMouseUp={handlePressEnd}
+                    onMouseLeave={() => setIsHovered(false)}
                     onContextMenu={(e) => e.preventDefault()}
                 >
                     <div className={`relative flex text-center p-1 sm:p-2 opacity-80 ${shapeClass} ${colorClass}`}>
@@ -437,12 +399,12 @@
                             <div className="absolute inset-0 flex flex-col justify-center items-center text-[#8c8a82] opacity-50 px-4 text-center">
                                 <p className="text-xs tracking-widest uppercase mb-2">No entries yet</p>
                                 <p className="text-[10px] font-sans mb-1">Click + to add a stamp.</p>
-                                <p className="text-[8px] font-sans opacity-70">Long press to delete.</p>
                             </div>
                         ) : (
                             pageRecords.map((record, idx) => (
-                                <div key={record.id} className="absolute flex justify-center items-center -translate-x-1/2 -translate-y-1/2" style={{ left: stampPositions[idx % 6].left, top: stampPositions[idx % 6].top }}>
-                                    <Stamp record={record} onRemove={handleRemove} />
+                                // ここで確実にxy両方の中心を合わせるように修正しました
+                                <div key={record.id} className="absolute flex justify-center items-center" style={{ left: stampPositions[idx % 6].left, top: stampPositions[idx % 6].top, transform: 'translate(-50%, -50%)' }}>
+                                    <Stamp record={record} />
                                 </div>
                             ))
                         )}
