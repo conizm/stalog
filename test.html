@@ -57,7 +57,7 @@
         .w-\[1px\] { width: 1px; } .h-\[1px\] { height: 1px; } .w-\[150\%\] { width: 150%; } .h-\[150\%\] { height: 150%; }
         .min-h-screen { min-height: 100vh; } .min-h-\[450px\] { min-height: 450px; } .max-h-\[75vh\] { max-height: 75vh; }
         .max-w-md { max-width: 28rem; } .max-w-2xl { max-width: 42rem; } .max-w-4xl { max-width: 56rem; } .max-w-5xl { max-width: 64rem; }
-        .max-w-\[360px\] { max-width: 360px; }
+        .max-w-\[360px\] { max-width: 360px; } .max-w-\[240px\] { max-width: 240px; }
         .aspect-\[3\/4\] { aspect-ratio: 3 / 4; }
 
         .font-sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
@@ -616,7 +616,7 @@
                     </div>
 
                     {activeTab === 'journal' && !isModalOpen && (
-                        <button onClick={openNewModal} className="fixed top-4 right-4 md:top-8 md:right-8 w-10 h-10 md:w-12 md:h-12 flex justify-center items-center border border-[#3b3a36] rounded-full text-[#3b3a36] hover:bg-[#3b3a36] hover:text-white transition-all duration-500 z-50 bg-white shadow-sm"><Icon name="plus" size={20} /></button>
+                        <button onClick={openNewModal} className="fixed top-4 right-4 md:top-8 md:right-8 w-10 h-10 md:w-12 md:h-12 flex justify-center items-center border border-[#3b3a36] rounded-full text-[#3b3a36] hover:bg-[#3b3a36] hover:text-white transition-all duration-500 z-[9999] bg-white shadow-sm cursor-pointer"><Icon name="plus" size={20} /></button>
                     )}
 
                     {activeTab === 'journal' && (
@@ -691,11 +691,11 @@
                                 <div className="max-w-md mx-auto w-full space-y-8 pb-4">
                                     
                                     <section className="space-y-6">
-                                        <h3 className="text-[10px] uppercase tracking-[0.2em] text-[#8c8a82] border-b border-[#E5E2DA] pb-2 font-sans">Cover Customization</h3>
+                                        <h3 className="text-[10px] uppercase tracking-[0.2em] text-[#8c8a82] border-b border-[#E5E2DA] pb-2 font-sans text-center">Cover Customization</h3>
                                         <div className="space-y-6">
                                             <div>
-                                                <label className="block text-[10px] uppercase tracking-widest text-[#8c8a82] mb-3 font-sans">Color</label>
-                                                <div className="flex gap-4">
+                                                <label className="block text-[10px] uppercase tracking-widest text-[#8c8a82] mb-3 font-sans text-center">Color</label>
+                                                <div className="flex justify-center gap-4">
                                                     {COVER_COLORS.map(c => (
                                                         <button 
                                                             key={c.id} 
@@ -708,8 +708,8 @@
                                                 </div>
                                             </div>
                                             <div>
-                                                <label className="block text-[10px] uppercase tracking-widest text-[#8c8a82] mb-3 font-sans">Design</label>
-                                                <div className="grid grid-cols-3 gap-2">
+                                                <label className="block text-[10px] uppercase tracking-widest text-[#8c8a82] mb-3 font-sans text-center">Design</label>
+                                                <div className="grid grid-cols-3 gap-2 max-w-[240px] mx-auto">
                                                     {COVER_DESIGNS.map(d => (
                                                         <button
                                                             key={d.id}
@@ -725,7 +725,7 @@
                                     </section>
 
                                     <section className="space-y-6 pt-4">
-                                        <h3 className="text-[10px] uppercase tracking-[0.2em] text-[#8c8a82] border-b border-[#E5E2DA] pb-2 font-sans">Data Management</h3>
+                                        <h3 className="text-[10px] uppercase tracking-[0.2em] text-[#8c8a82] border-b border-[#E5E2DA] pb-2 font-sans text-center">Data Management</h3>
                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                             <button onClick={handleExport} className="flex items-center justify-center gap-3 py-3 border border-[#3b3a36] text-[#3b3a36] uppercase tracking-widest text-[10px] font-sans hover:bg-[#3b3a36] hover:text-white transition-all duration-500"><Icon name="download" size={14} />Backup</button>
                                             <button onClick={() => fileInputRef.current?.click()} className="flex items-center justify-center gap-3 py-3 border border-[#3b3a36] text-[#3b3a36] uppercase tracking-widest text-[10px] font-sans hover:bg-[#3b3a36] hover:text-white transition-all duration-500"><Icon name="upload" size={14} />Restore</button>
@@ -751,7 +751,7 @@
                     </nav>
 
                     {isModalOpen && (
-                        <div className="fixed inset-0 z-50 flex justify-center items-center p-4">
+                        <div className="fixed inset-0 z-[9999] flex justify-center items-center p-4">
                             <div className="absolute inset-0 bg-[#3b3a36]/20 backdrop-blur-sm" onClick={handleCloseModal}></div>
                             <div className="bg-[#F9F8F6] w-full max-w-md p-8 relative shadow-2xl border border-[#E5E2DA] z-10 animate-in fade-in zoom-in-95 duration-300">
                                 <button onClick={handleCloseModal} className="absolute top-6 right-6 text-[#8c8a82] hover:text-[#3b3a36] transition-colors"><Icon name="x" size={24} /></button>
