@@ -2,18 +2,17 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <!-- viewport-fit=cover を追加してセーフエリアを有効化 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Travel Log — Personal Journal</title>
+    <title>STALOG — Personal Journal</title>
 
     <link rel="icon" href="stalog_logo_favi.png">
     <link rel="apple-touch-icon" href="stalog_logo_favi.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="Travel Log">
+    <meta name="apple-mobile-web-app-title" content="STALOG">
 
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Travel Log">
+    <meta property="og:title" content="STALOG">
     <meta property="og:description" content="A minimalist personal journal to keep track of your global footsteps.">
     <meta property="og:image" content="stalog_logo_favi.png">
     <meta name="twitter:card" content="summary_large_image">
@@ -56,8 +55,8 @@
 
         .w-full { width: 100%; } .h-full { height: 100%; } .w-4 { width: 1rem; } .w-6 { width: 1.5rem; } .w-8 { width: 2rem; } .w-10 { width: 2.5rem; } .h-10 { height: 2.5rem; }
         .w-16 { width: 4rem; } .h-16 { height: 4rem; } .w-20 { width: 5rem; } .h-14 { height: 3.5rem; } .w-1\/2 { width: 50%; }
-        /* サイズ拡大用に追加 */
-        .w-24 { width: 6rem; } .h-24 { height: 6rem; } .w-32 { width: 8rem; } .h-20 { height: 5rem; }
+        /* スタンプサイズ (90%に調整) */
+        .w-24 { width: 5.4rem; } .h-24 { height: 5.4rem; } .w-32 { width: 7.2rem; } .h-20 { height: 4.5rem; }
         .w-\[1px\] { width: 1px; } .h-\[1px\] { height: 1px; } .w-\[150\%\] { width: 150%; } .h-\[150\%\] { height: 150%; }
         .min-h-screen { min-height: 100vh; } .min-h-\[450px\] { min-height: 450px; } .max-h-\[75vh\] { max-height: 75vh; }
         .max-w-md { max-width: 28rem; } .max-w-2xl { max-width: 42rem; } .max-w-4xl { max-width: 56rem; } .max-w-5xl { max-width: 64rem; }
@@ -109,10 +108,10 @@
 
         @media (min-width: 640px) {
             .sm\:w-20 { width: 5rem; } .sm\:h-20 { height: 5rem; } .sm\:w-24 { width: 6rem; } .sm\:h-16 { height: 4rem; }
-            /* サイズ拡大用に追加 */
-            .sm\:w-32 { width: 8rem; } .sm\:h-32 { height: 8rem; } .sm\:w-36 { width: 9rem; } .sm\:h-24 { height: 6rem; }
+            /* スタンプサイズ (90%に調整) */
+            .sm\:w-32 { width: 7.2rem; } .sm\:h-32 { height: 7.2rem; } .sm\:w-36 { width: 8.1rem; } .sm\:h-24 { height: 5.4rem; }
             
-            .sm\:text-\[8px\] { font-size: 8px; } .sm\:text-\[9px\] { font-size: 9px; } .sm\:text-\[10px\] { font-size: 10px; } .sm\:text-xs { font-size: 0.75rem; line-height: 1rem; } .sm\:text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+            .sm\:text-\[8px\] { font-size: 8px; } .sm\:text-\[9px\] { font-size: 9px; } .sm\:text-\[10px\] { font-size: 10px; } .sm\:text-[11px] { font-size: 11px; } .sm\:text-xs { font-size: 0.75rem; line-height: 1rem; } .sm\:text-sm { font-size: 0.875rem; line-height: 1.25rem; }
             .sm\:p-2 { padding: 0.5rem; } .sm\:p-4 { padding: 1rem; } .sm\:p-12 { padding: 3rem; } .sm\:px-8 { padding-left: 2rem; padding-right: 2rem; }
             .sm\:py-4 { padding-top: 1rem; padding-bottom: 1rem; } .sm\:pt-1 { padding-top: 0.25rem; } .sm\:mt-1 { margin-top: 0.25rem; } .sm\:mt-2 { margin-top: 0.5rem; } .sm\:mb-1 { margin-bottom: 0.25rem; } .sm\:ml-1 { margin-left: 0.25rem; }
             .sm\:left-4 { left: 1rem; } .sm\:right-4 { right: 1rem; }
@@ -122,11 +121,11 @@
         }
         @media (min-width: 768px) {
             .md\:w-28 { width: 7rem; } .md\:h-28 { height: 7rem; } .md\:w-32 { width: 8rem; } .md\:h-24 { height: 6rem; } .md\:h-20 { height: 5rem; } .md\:w-12 { width: 3rem; } .md\:h-12 { height: 3rem; }
-            /* サイズ拡大用に追加 */
-            .md\:w-44 { width: 11rem; } .md\:h-44 { height: 11rem; } .md\:w-48 { width: 12rem; } .md\:h-32 { height: 8rem; } .md\:h-36 { height: 9rem; }
+            /* スタンプサイズ (90%に調整) */
+            .md\:w-44 { width: 9.9rem; } .md\:h-44 { height: 9.9rem; } .md\:w-48 { width: 10.8rem; } .md\:h-32 { height: 7.2rem; } .md\:h-36 { height: 8.1rem; }
             
             .md\:border-2 { border-width: 2px; } .md\:border-\[3px\] { border-width: 3px; }
-            .md\:text-\[8px\] { font-size: 8px; } .md\:text-\[9px\] { font-size: 9px; } .md\:text-\[10px\] { font-size: 10px; } .md\:text-xs { font-size: 0.75rem; line-height: 1rem; } .md\:text-sm { font-size: 0.875rem; line-height: 1.25rem; } .md\:text-base { font-size: 1rem; line-height: 1.5rem; } .md\:text-lg { font-size: 1.125rem; line-height: 1.75rem; } .md\:text-xl { font-size: 1.25rem; line-height: 1.75rem; } .md\:text-2xl { font-size: 1.5rem; line-height: 2rem; } .md\:text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+            .md\:text-\[8px\] { font-size: 8px; } .md\:text-\[9px\] { font-size: 9px; } .md\:text-\[10px\] { font-size: 10px; } .md\:text-[11px] { font-size: 11px; } .md\:text-xs { font-size: 0.75rem; line-height: 1rem; } .md\:text-sm { font-size: 0.875rem; line-height: 1.25rem; } .md\:text-base { font-size: 1rem; line-height: 1.5rem; } .md\:text-lg { font-size: 1.125rem; line-height: 1.75rem; } .md\:text-xl { font-size: 1.25rem; line-height: 1.75rem; } .md\:text-2xl { font-size: 1.5rem; line-height: 2rem; } .md\:text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
             .md\:top-8 { top: 2rem; } .md\:right-8 { right: 2rem; } .md\:gap-20 { gap: 5rem; }
             .md\:max-w-\[480px\] { max-width: 480px; }
         }
@@ -150,7 +149,7 @@
     <div id="initial-loader" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: #F9F8F6; z-index: 9999;">
         <div style="width: 24px; height: 24px; border: 2px solid #E5E2DA; border-top-color: #3b3a36; border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 24px;"></div>
         <p style="font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: #8c8a82; animation: pulse-opacity 2s ease-in-out infinite;">
-            Loading Travel Log
+            Loading STALOG
         </p>
     </div>
 
@@ -200,18 +199,16 @@
             const [isHovered, setIsHovered] = useState(false);
             const { type, rotation, colorClass } = record.style;
             
-            // ★ スタンプのサイズを1.5倍に大きくするクラス調整
             let shapeClass = "";
             if (type.includes('circle')) shapeClass = `rounded-full w-24 h-24 sm:w-32 sm:h-32 md:w-44 md:h-44 flex flex-col justify-center items-center ${type.includes('single') ? 'border md:border-2' : 'border-[2px] md:border-[3px] border-double'}`;
             else if (type.includes('rect')) shapeClass = `w-32 h-20 sm:w-36 sm:h-24 md:w-48 md:h-32 flex flex-col justify-center items-center ${type.includes('double') ? 'border-[2px] md:border-[3px] border-double' : 'border md:border-2'}`;
             else shapeClass = `w-24 h-24 sm:w-32 sm:h-32 md:w-44 md:h-36 flex flex-col justify-center items-center rounded-xl ${type.includes('double') ? 'border-[2px] md:border-[3px] border-double' : 'border md:border-2'}`;
 
-            // ★ スタンプ内の文字サイズも拡大
             const countryName = record.country;
-            let fontSizeClass = "text-xs sm:text-sm md:text-xl tracking-wider";
-            if (countryName.length >= 13) fontSizeClass = "text-[8px] sm:text-[10px] md:text-sm tracking-tighter";
-            else if (countryName.length >= 11) fontSizeClass = "text-[10px] sm:text-xs md:text-base tracking-tight";
-            else if (countryName.length >= 9) fontSizeClass = "text-[11px] sm:text-sm md:text-lg tracking-normal";
+            let fontSizeClass = "text-[11px] sm:text-xs md:text-lg tracking-wider";
+            if (countryName.length >= 13) fontSizeClass = "text-[7px] sm:text-[9px] md:text-xs tracking-tighter";
+            else if (countryName.length >= 11) fontSizeClass = "text-[9px] sm:text-[11px] md:text-sm tracking-tight";
+            else if (countryName.length >= 9) fontSizeClass = "text-[10px] sm:text-xs md:text-base tracking-normal";
 
             return (
                 <div 
@@ -222,10 +219,10 @@
                     onContextMenu={(e) => e.preventDefault()}
                 >
                     <div className={`relative flex text-center p-1 sm:p-2 opacity-80 ${shapeClass} ${colorClass}`}>
-                        <span className="text-[8px] sm:text-[10px] md:text-xs tracking-widest uppercase mb-0.5 sm:mb-1 opacity-70 font-sans">Visas</span>
+                        <span className="text-[7px] sm:text-[9px] md:text-[11px] tracking-widest uppercase mb-0.5 sm:mb-1 opacity-70 font-sans">Visas</span>
                         <h3 className={`font-bold leading-tight uppercase px-1 ${fontSizeClass}`}>{record.country}</h3>
-                        {record.subRegion && <span className="text-[10px] sm:text-xs md:text-sm italic mt-0.5 sm:mt-1 border-t border-current pt-0.5 sm:pt-1 px-1 sm:px-2">{record.subRegion}</span>}
-                        <span className="text-[8px] sm:text-[10px] md:text-xs tracking-wider mt-1 sm:mt-2 font-mono">{formatDate(record.date)}</span>
+                        {record.subRegion && <span className="text-[9px] sm:text-[11px] md:text-xs italic mt-0.5 sm:mt-1 border-t border-current pt-0.5 sm:pt-1 px-1 sm:px-2">{record.subRegion}</span>}
+                        <span className="text-[7px] sm:text-[9px] md:text-[11px] tracking-wider mt-1 sm:mt-2 font-mono">{formatDate(record.date)}</span>
                     </div>
                 </div>
             );
@@ -414,7 +411,7 @@
                 const blob = new Blob([JSON.stringify(records, null, 2)], { type: 'application/json' });
                 const link = document.createElement('a');
                 link.href = URL.createObjectURL(blob);
-                link.download = `travel-log-${new Date().toISOString().split('T')[0]}.json`;
+                link.download = `stalog-${new Date().toISOString().split('T')[0]}.json`;
                 link.click();
             };
 
@@ -502,12 +499,6 @@
 
                     {activeTab === 'journal' && (
                         <div className="w-full max-w-5xl flex flex-col flex-grow relative z-10 justify-center">
-                            <header className="mb-8 mt-2 text-center relative">
-                                <p className="text-[7px] md:text-[8px] tracking-[0.3em] uppercase text-[#8c8a82] mb-2 font-sans">Personal Journal</p>
-                                <h1 className="text-lg md:text-xl tracking-widest uppercase font-light">Travel Log</h1>
-                                <div className="w-8 h-[1px] bg-[#3b3a36] mx-auto mt-4"></div>
-                            </header>
-
                             <div className="relative w-full px-2 sm:px-8 flex items-center justify-center flex-grow">
                                 <div className="w-full max-w-[360px] sm:max-w-[420px] md:max-w-[480px] aspect-[3/4] min-h-[450px] max-h-[75vh] bg-white shadow-2xl rounded-r-xl rounded-l-sm relative border border-[#E5E2DA] border-l-[#d5d2c4] overflow-hidden mx-auto cursor-pointer" 
                                     onClick={handleNotebookClick}
@@ -584,14 +575,13 @@
                                     </section>
                                     <section className="space-y-4 pt-4">
                                         <h3 className="text-[10px] uppercase tracking-[0.2em] text-[#8c8a82] border-b border-[#E5E2DA] pb-2 font-sans">About</h3>
-                                        <p className="text-[11px] text-[#b5b3aa] font-sans leading-relaxed">Travel Log v2.0 — Your data is stored locally. Use Backup to save your journey before switching devices.</p>
+                                        <p className="text-[11px] text-[#b5b3aa] font-sans leading-relaxed">STALOG v2.0 — Your data is stored locally. Use Backup to save your journey before switching devices.</p>
                                     </section>
                                 </div>
                             </div>
                         </div>
                     )}
 
-                    {/* ★ フッターメニューの文字サイズをテキストに合わせて拡大 (text-[11px] md:text-sm) */}
                     <nav 
                         className="fixed bottom-0 left-0 right-0 bg-[#F9F8F6]/80 backdrop-blur-md border-t border-[#DEDCD5] flex justify-center pt-4 sm:pt-6 z-40"
                         style={{ paddingBottom: 'calc(0.05rem + env(safe-area-inset-bottom))' }}
