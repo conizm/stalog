@@ -44,7 +44,7 @@
         .bottom-\[-24px\] { bottom: -24px; }
 
         .p-1 { padding: 0.25rem; } .p-2 { padding: 0.5rem; } .p-4 { padding: 1rem; } .p-6 { padding: 1.5rem; } .p-8 { padding: 2rem; }
-        .px-1 { padding-left: 0.25rem; padding-right: 0.25rem; } .px-2 { padding-left: 0.5rem; padding-right: 0.5rem; } .px-4 { padding-left: 1rem; padding-right: 1rem; } .px-8 { padding-left: 2rem; padding-right: 2rem; } .px-12 { padding-left: 3rem; padding-right: 3rem; }
+        .px-1 { padding-left: 0.25rem; padding-right: 0.25rem; } .px-2 { padding-left: 0.5rem; padding-right: 0.5rem; } .px-4 { padding-left: 1rem; padding-right: 1rem; } .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; } .px-8 { padding-left: 2rem; padding-right: 2rem; } .px-12 { padding-left: 3rem; padding-right: 3rem; }
         .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; } .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; } .py-4 { padding-top: 1rem; padding-bottom: 1rem; } .py-8 { padding-top: 2rem; padding-bottom: 2rem; } .py-12 { padding-top: 3rem; padding-bottom: 3rem; } .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
         .pt-0\.5 { padding-top: 0.125rem; } .pt-4 { padding-top: 1rem; } .pb-1 { padding-bottom: 0.25rem; } .pb-2 { padding-bottom: 0.5rem; } .pb-4 { padding-bottom: 1rem; } .pb-12 { padding-bottom: 3rem; } .pb-24 { padding-bottom: 6rem; }
         .mx-auto { margin-left: auto; margin-right: auto; } .my-8 { margin-top: 2rem; margin-bottom: 2rem; }
@@ -56,7 +56,7 @@
         .w-24 { width: 5.4rem; } .h-24 { height: 5.4rem; } .w-32 { width: 7.2rem; } .h-20 { height: 4.5rem; }
         .w-\[1px\] { width: 1px; } .h-\[1px\] { height: 1px; } .w-\[150\%\] { width: 150%; } .h-\[150\%\] { height: 150%; }
         .min-h-screen { min-height: 100vh; } .min-h-\[450px\] { min-height: 450px; } .max-h-\[75vh\] { max-height: 75vh; }
-        .max-w-md { max-width: 28rem; } .max-w-2xl { max-width: 42rem; } .max-w-4xl { max-width: 56rem; } .max-w-5xl { max-width: 64rem; }
+        .max-w-xs { max-width: 20rem; } .max-w-md { max-width: 28rem; } .max-w-2xl { max-width: 42rem; } .max-w-4xl { max-width: 56rem; } .max-w-5xl { max-width: 64rem; }
         .max-w-\[360px\] { max-width: 360px; } .max-w-\[240px\] { max-width: 240px; }
         .aspect-\[3\/4\] { aspect-ratio: 3 / 4; }
 
@@ -88,6 +88,7 @@
         .pointer-events-none { pointer-events: none; } .overflow-hidden { overflow: hidden; } .overflow-x-hidden { overflow-x: hidden; } .appearance-none { appearance: none; } 
         .cursor-pointer { cursor: pointer; } 
         .select-none { user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
+        .z-0 { z-index: 0; } .z-10 { z-index: 10; } .z-30 { z-index: 30; } .z-40 { z-index: 40; } .z-\[9999\] { z-index: 9999; }
         
         .-translate-x-1\/2 { transform: translateX(-50%); } .-translate-y-1\/2 { transform: translateY(-50%); }
         .gap-0\.5 { gap: 0.125rem; } .gap-1 { gap: 0.25rem; } .gap-2 { gap: 0.5rem; } .gap-3 { gap: 0.75rem; } .gap-4 { gap: 1rem; } .gap-6 { gap: 1.5rem; } .gap-8 { gap: 2rem; } .gap-12 { gap: 3rem; }
@@ -683,14 +684,14 @@
                     )}
 
                     {activeTab === 'settings' && (
-                        <div className="w-full max-w-5xl flex flex-col flex-grow relative z-10 justify-center animate-in fade-in duration-500 py-8">
+                        <div className="w-full max-w-5xl flex flex-col flex-grow relative z-10 justify-center animate-in fade-in duration-500 py-6 sm:py-8">
                             <div className="w-full max-w-4xl bg-white shadow-2xl p-6 sm:p-12 border border-[#E5E2DA] mx-auto">
-                                <header className="mb-12 mt-4 text-center">
+                                <header className="mb-8 sm:mb-12 mt-2 sm:mt-4 text-center">
                                     <p className="text-[7px] md:text-[8px] tracking-[0.3em] uppercase text-[#8c8a82] mb-2 font-sans">Options</p>
                                     <h2 className="text-lg md:text-xl tracking-widest font-light lowercase">settings</h2>
-                                    <div className="w-8 h-[1px] bg-[#3b3a36] mx-auto mt-4"></div>
+                                    <div className="w-8 h-[1px] bg-[#3b3a36] mx-auto mt-3 sm:mt-4"></div>
                                 </header>
-                                <div className="max-w-md mx-auto w-full space-y-8 pb-4">
+                                <div className="max-w-md mx-auto w-full space-y-8 sm:space-y-10 pb-4">
                                     
                                     <section className="space-y-6">
                                         <h3 className="text-[10px] uppercase tracking-[0.2em] text-[#8c8a82] border-b border-[#E5E2DA] pb-2 font-sans text-center">Cover Customization</h3>
@@ -711,12 +712,12 @@
                                             </div>
                                             <div>
                                                 <label className="block text-[10px] uppercase tracking-widest text-[#8c8a82] mb-3 font-sans text-center">Design</label>
-                                                <div className="flex justify-center gap-2">
+                                                <div className="flex justify-center gap-3 sm:gap-4">
                                                     {COVER_DESIGNS.map(d => (
                                                         <button
                                                             key={d.id}
                                                             onClick={() => saveCoverSettings(coverColor, d.id, coverTitle, coverSubtitle)}
-                                                            className={`py-2 px-6 sm:px-8 text-[8px] sm:text-[9px] uppercase tracking-widest font-sans border ${coverDesign === d.id ? 'border-[#3b3a36] bg-[#3b3a36] text-white' : 'border-[#E5E2DA] text-[#8c8a82] hover:border-[#3b3a36]'} transition-colors`}
+                                                            className={`py-2 px-4 sm:px-8 text-[8px] sm:text-[9px] uppercase tracking-widest font-sans border ${coverDesign === d.id ? 'border-[#3b3a36] bg-[#3b3a36] text-white' : 'border-[#E5E2DA] text-[#8c8a82] hover:border-[#3b3a36]'} transition-colors`}
                                                         >
                                                             {d.name}
                                                         </button>
@@ -741,12 +742,12 @@
 
                                     <section className="space-y-6 pt-4">
                                         <h3 className="text-[10px] uppercase tracking-[0.2em] text-[#8c8a82] border-b border-[#E5E2DA] pb-2 font-sans text-center">Data Management</h3>
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                            <button onClick={handleExport} className="flex items-center justify-center gap-3 py-3 border border-[#3b3a36] text-[#3b3a36] uppercase tracking-widest text-[10px] font-sans hover:bg-[#3b3a36] hover:text-white transition-all duration-500"><Icon name="download" size={14} />Backup</button>
-                                            <button onClick={() => fileInputRef.current?.click()} className="flex items-center justify-center gap-3 py-3 border border-[#3b3a36] text-[#3b3a36] uppercase tracking-widest text-[10px] font-sans hover:bg-[#3b3a36] hover:text-white transition-all duration-500"><Icon name="upload" size={14} />Restore</button>
+                                        <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                                            <button onClick={handleExport} className="flex items-center justify-center gap-2 py-3 border border-[#E5E2DA] text-[#3b3a36] uppercase tracking-widest text-[9px] sm:text-[10px] font-sans hover:border-[#3b3a36] transition-all duration-300"><Icon name="download" size={14} />Backup</button>
+                                            <button onClick={() => fileInputRef.current?.click()} className="flex items-center justify-center gap-2 py-3 border border-[#E5E2DA] text-[#3b3a36] uppercase tracking-widest text-[9px] sm:text-[10px] font-sans hover:border-[#3b3a36] transition-all duration-300"><Icon name="upload" size={14} />Restore</button>
                                             <input type="file" ref={fileInputRef} onChange={handleImport} accept=".json" className="hidden" />
                                         </div>
-                                        <p className="text-[11px] text-[#b5b3aa] font-sans leading-relaxed text-center pt-4">stalog v2.0</p>
+                                        <p className="text-[11px] text-[#b5b3aa] font-sans leading-relaxed text-center pt-2 sm:pt-4">stalog v2.0</p>
                                     </section>
                                 </div>
                             </div>
