@@ -53,7 +53,7 @@
         .mb-0\.5 { margin-bottom: 0.125rem; } .mb-1 { margin-bottom: 0.25rem; } .mb-2 { margin-bottom: 0.5rem; } .mb-4 { margin-bottom: 1rem; } .mb-8 { margin-bottom: 2rem; } .mb-10 { margin-bottom: 2.5rem; } .mb-12 { margin-bottom: 3rem; }
         .ml-1 { margin-left: 0.25rem; }
 
-        .w-full { width: 100%; } .h-full { height: 100%; } .w-4 { width: 1rem; } .w-6 { width: 1.5rem; } .w-8 { width: 2rem; } .w-10 { width: 2.5rem; } .h-10 { height: 2.5rem; }
+        .w-full { width: 100%; } .h-full { height: 100%; } .w-3 { width: 0.75rem; } .h-3 { height: 0.75rem; } .w-4 { width: 1rem; } .h-4 { height: 1rem; } .w-5 { width: 1.25rem; } .h-5 { height: 1.25rem; } .w-6 { width: 1.5rem; } .w-8 { width: 2rem; } .w-10 { width: 2.5rem; } .h-10 { height: 2.5rem; }
         .w-16 { width: 4rem; } .h-16 { height: 4rem; } .w-20 { width: 5rem; } .h-14 { height: 3.5rem; } .w-1\/2 { width: 50%; }
         /* スタンプサイズ (90%に調整) */
         .w-24 { width: 5.4rem; } .h-24 { height: 5.4rem; } .w-32 { width: 7.2rem; } .h-20 { height: 4.5rem; }
@@ -86,7 +86,7 @@
         .shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); } .shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
         .shadow-\[inset_-15px_0_20px_-15px_rgba\(0\,0\,0\,0\.05\)\] { box-shadow: inset -15px 0 20px -15px rgba(0,0,0,0.05); } .shadow-\[inset_15px_0_20px_-15px_rgba\(0\,0\,0\,0\.05\)\] { box-shadow: inset 15px 0 20px -15px rgba(0,0,0,0.05); }
 
-        .opacity-0 { opacity: 0; } .opacity-50 { opacity: 0.5; } .opacity-70 { opacity: 0.7; } .opacity-80 { opacity: 0.8; } .opacity-\[0\.02\] { opacity: 0.02; }
+        .opacity-0 { opacity: 0; } .opacity-40 { opacity: 0.4; } .opacity-50 { opacity: 0.5; } .opacity-60 { opacity: 0.6; } .opacity-70 { opacity: 0.7; } .opacity-80 { opacity: 0.8; } .opacity-\[0\.02\] { opacity: 0.02; }
         .mix-blend-multiply { mix-blend-mode: multiply; } .blur-xl { filter: blur(24px); } .backdrop-blur-sm { backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); } .backdrop-blur-md { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
         .pointer-events-none { pointer-events: none; } .overflow-hidden { overflow: hidden; } .overflow-x-hidden { overflow-x: hidden; } .appearance-none { appearance: none; } 
         .cursor-pointer { cursor: pointer; } 
@@ -99,7 +99,8 @@
         .transition-all { transition-property: all; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
         .transition-colors { transition-property: color, background-color, border-color, fill, stroke; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
         .transition-transform { transition-property: transform; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
-        .duration-300 { transition-duration: 300ms; } .duration-500 { transition-duration: 500ms; }
+        .duration-300 { transition-duration: 300ms; } .duration-500 { transition-duration: 500ms; } .duration-700 { transition-duration: 700ms; }
+        .ease-in-out { transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
         .animate-in { animation-name: fadeIn; animation-duration: 0.5s; } .fade-in { animation-name: fadeIn; animation-duration: 0.5s; } .zoom-in-95 { animation-name: zoomIn; animation-duration: 0.3s; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } } @keyframes zoomIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
 
@@ -107,19 +108,21 @@
         .disabled\:opacity-20:disabled { opacity: 0.2; } .disabled\:opacity-30:disabled { opacity: 0.3; }
 
         @media (min-width: 640px) {
+            .sm\:w-4 { width: 1rem; } .sm\:h-4 { height: 1rem; }
             .sm\:w-20 { width: 5rem; } .sm\:h-20 { height: 5rem; } .sm\:w-24 { width: 6rem; } .sm\:h-16 { height: 4rem; }
             /* スタンプサイズ (90%に調整) */
             .sm\:w-32 { width: 7.2rem; } .sm\:h-32 { height: 7.2rem; } .sm\:w-36 { width: 8.1rem; } .sm\:h-24 { height: 5.4rem; }
             
             .sm\:text-\[8px\] { font-size: 8px; } .sm\:text-\[9px\] { font-size: 9px; } .sm\:text-\[10px\] { font-size: 10px; } .sm\:text-[11px] { font-size: 11px; } .sm\:text-xs { font-size: 0.75rem; line-height: 1rem; } .sm\:text-sm { font-size: 0.875rem; line-height: 1.25rem; }
             .sm\:p-2 { padding: 0.5rem; } .sm\:p-4 { padding: 1rem; } .sm\:p-12 { padding: 3rem; } .sm\:px-8 { padding-left: 2rem; padding-right: 2rem; }
-            .sm\:py-4 { padding-top: 1rem; padding-bottom: 1rem; } .sm\:pt-1 { padding-top: 0.25rem; } .sm\:mt-1 { margin-top: 0.25rem; } .sm\:mt-2 { margin-top: 0.5rem; } .sm\:mb-1 { margin-bottom: 0.25rem; } .sm\:ml-1 { margin-left: 0.25rem; }
+            .sm\:py-4 { padding-top: 1rem; padding-bottom: 1rem; } .sm\:pt-1 { padding-top: 0.25rem; } .sm\:mt-1 { margin-top: 0.25rem; } .sm\:mt-1\.5 { margin-top: 0.375rem; } .sm\:mt-2 { margin-top: 0.5rem; } .sm\:mb-1 { margin-bottom: 0.25rem; } .sm\:ml-1 { margin-left: 0.25rem; }
             .sm\:left-4 { left: 1rem; } .sm\:right-4 { right: 1rem; }
             .sm\:max-w-\[420px\] { max-width: 420px; }
             .sm\:flex-row { flex-direction: row; } .sm\:items-baseline { align-items: baseline; }
             .sm\:gap-1 { gap: 0.25rem; } .sm\:gap-4 { gap: 1rem; } .sm\:gap-6 { gap: 1.5rem; }
         }
         @media (min-width: 768px) {
+            .md\:w-5 { width: 1.25rem; } .md\:h-5 { height: 1.25rem; }
             .md\:w-28 { width: 7rem; } .md\:h-28 { height: 7rem; } .md\:w-32 { width: 8rem; } .md\:h-24 { height: 6rem; } .md\:h-20 { height: 5rem; } .md\:w-12 { width: 3rem; } .md\:h-12 { height: 3rem; }
             /* スタンプサイズ (90%に調整) */
             .md\:w-44 { width: 9.9rem; } .md\:h-44 { height: 9.9rem; } .md\:w-48 { width: 10.8rem; } .md\:h-32 { height: 7.2rem; } .md\:h-36 { height: 8.1rem; }
@@ -169,17 +172,28 @@
             return isNaN(d.getTime()) ? "" : `${d.getDate().toString().padStart(2, '0')} ${months[d.getMonth()]} ${d.getFullYear()}`;
         };
 
+        const getDecorationFromId = (id) => {
+            const decs = ['none', 'airplane', 'waves', 'sun', 'compass', 'none'];
+            let hash = 0;
+            for (let i = 0; i < id.length; i++) {
+                hash = id.charCodeAt(i) + ((hash << 5) - hash);
+            }
+            return decs[Math.abs(hash) % decs.length];
+        };
+
         const generateStampStyle = () => {
             const types = ['circle', 'circle-single', 'rect', 'rect-double', 'rounded', 'rounded-double'];
             const colors = ['border-[#3b3a36] text-[#3b3a36]', 'border-[#5A4D41] text-[#5A4D41]', 'border-[#4A5D6B] text-[#4A5D6B]', 'border-[#525945] text-[#525945]', 'border-[#724840] text-[#724840]'];
+            const decorations = ['none', 'airplane', 'waves', 'sun', 'compass', 'none'];
             return {
                 type: types[Math.floor(Math.random() * types.length)],
                 rotation: Math.floor(Math.random() * 24) - 12,
                 colorClass: colors[Math.floor(Math.random() * colors.length)],
+                decoration: decorations[Math.floor(Math.random() * decorations.length)],
             };
         };
 
-        const Icon = ({ name, size = 16, strokeWidth = 1.5 }) => {
+        const Icon = ({ name, size = 16, strokeWidth = 1.5, className = "" }) => {
             const icons = {
                 plus: <path d="M12 5v14M5 12h14" />,
                 x: <path d="M18 6 6 18M6 6l12 12" />,
@@ -187,9 +201,12 @@
                 chevronRight: <path d="m9 18 6-6-6-6" />,
                 download: <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />,
                 upload: <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12" />,
+                airplane: <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-.5-.5-2.5 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.5l-1 1.5c-.2.2-.1.6.2.8L8 12l-4 4-2.5-.5c-.3 0-.6.2-.7.5l-.5.8c-.1.2 0 .5.2.6L4 19l1.5 3.5c.1.2.4.3.6.2l.8-.5c.3-.1.5-.4.5-.7L7 19l4-4 3 5.1c.2.3.6.4.8.2l1.5-1c.3-.2.6-.6.5-1.1z" />,
+                sun: <g><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></g>,
+                compass: <g><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z"/></g>,
             };
             return (
-                <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round">
+                <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" className={className}>
                     {icons[name]}
                 </svg>
             );
@@ -198,6 +215,7 @@
         const Stamp = ({ record }) => {
             const [isHovered, setIsHovered] = useState(false);
             const { type, rotation, colorClass } = record.style;
+            const decoration = record.style.decoration || getDecorationFromId(record.id);
             
             let shapeClass = "";
             if (type.includes('circle')) shapeClass = `rounded-full w-24 h-24 sm:w-32 sm:h-32 md:w-44 md:h-44 flex flex-col justify-center items-center ${type.includes('single') ? 'border md:border-2' : 'border-[2px] md:border-[3px] border-double'}`;
@@ -219,9 +237,29 @@
                     onContextMenu={(e) => e.preventDefault()}
                 >
                     <div className={`relative flex text-center p-1 sm:p-2 opacity-80 ${shapeClass} ${colorClass}`}>
+                        
+                        {/* ★ 新規追加：切手の消印風 波線装飾 (枠の右側に飛び出すように配置) */}
+                        {decoration === 'waves' && (
+                            <div className="absolute left-[85%] top-1/2 -translate-y-1/2 pointer-events-none">
+                                <svg viewBox="0 0 38 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" className="w-12 h-8 sm:w-16 sm:h-10 opacity-60">
+                                    <path d="M0 4 c2-2 4-2 6 0 s4 2 6 0 s4-2 6 0 s4 2 6 0 s4-2 6 0 s4 2 6 0" />
+                                    <path d="M0 12 c2-2 4-2 6 0 s4 2 6 0 s4-2 6 0 s4 2 6 0 s4-2 6 0 s4 2 6 0" />
+                                    <path d="M0 20 c2-2 4-2 6 0 s4 2 6 0 s4-2 6 0 s4 2 6 0 s4-2 6 0 s4 2 6 0" />
+                                </svg>
+                            </div>
+                        )}
+
                         <span className="text-[7px] sm:text-[9px] md:text-[11px] tracking-widest uppercase mb-0.5 sm:mb-1 opacity-70 font-sans">Visas</span>
                         <h3 className={`font-bold leading-tight uppercase px-1 ${fontSizeClass}`}>{record.country}</h3>
                         {record.subRegion && <span className="text-[9px] sm:text-[11px] md:text-xs italic mt-0.5 sm:mt-1 border-t border-current pt-0.5 sm:pt-1 px-1 sm:px-2">{record.subRegion}</span>}
+                        
+                        {/* 波線以外の装飾は余白を埋めるように枠内に配置 */}
+                        {(!type.includes('circle')) && decoration && decoration !== 'none' && decoration !== 'waves' && (
+                            <div className="mt-1 sm:mt-1.5 mb-0.5 opacity-60 flex justify-center w-full">
+                                <Icon name={decoration} strokeWidth={1.2} className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" />
+                            </div>
+                        )}
+                        
                         <span className="text-[7px] sm:text-[9px] md:text-[11px] tracking-wider mt-1 sm:mt-2 font-mono">{formatDate(record.date)}</span>
                     </div>
                 </div>
@@ -478,7 +516,12 @@
                             </div>
                         ) : (
                             pageRecords.map((record, idx) => (
-                                <div key={record.id} className="absolute flex justify-center items-center" style={{ left: stampPositions[idx % 6].left, top: stampPositions[idx % 6].top, transform: 'translate(-50%, -50%)' }}>
+                                /* ★ スッっと移動するグライドアニメーションを outer 枠に設定 */
+                                <div 
+                                    key={record.id} 
+                                    className="absolute flex justify-center items-center transition-all duration-700 ease-in-out" 
+                                    style={{ left: stampPositions[idx % 6].left, top: stampPositions[idx % 6].top, transform: 'translate(-50%, -50%)' }}
+                                >
                                     <Stamp record={record} />
                                 </div>
                             ))
@@ -503,7 +546,6 @@
                                 <div className="w-full max-w-[360px] sm:max-w-[420px] md:max-w-[480px] aspect-[3/4] min-h-[450px] max-h-[75vh] bg-white shadow-2xl rounded-r-xl rounded-l-sm relative border border-[#E5E2DA] border-l-[#d5d2c4] overflow-hidden mx-auto cursor-pointer" 
                                     onClick={handleNotebookClick}
                                 >
-                                    
                                     <div className="absolute inset-0 z-10" style={{ transformStyle: 'preserve-3d' }}>
                                         <div className="absolute inset-0 bg-white shadow-[inset_15px_0_20px_-15px_rgba(0,0,0,0.05)]">
                                             <PageContent pageIndex={flipState?.direction === 'next' ? flipState.to : (flipState?.direction === 'prev' ? flipState.from : currentPage)} />
