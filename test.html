@@ -2,7 +2,6 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <!-- viewport-fit=cover を追加してセーフエリアを有効化 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>STALOG — Personal Journal</title>
 
@@ -38,7 +37,7 @@
         .flex { display: flex; } .grid { display: grid; } .hidden { display: none; } .flex-col { flex-direction: column; }
         .flex-grow { flex-grow: 1; } .items-center { align-items: center; } .items-baseline { align-items: baseline; }
         .justify-center { justify-content: center; } .justify-between { justify-content: space-between; }
-        .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); } .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); } .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
         .fixed { position: fixed; } .absolute { position: absolute; } .relative { position: relative; }
         .inset-0 { top: 0; right: 0; bottom: 0; left: 0; } .top-0 { top: 0; } .bottom-0 { bottom: 0; } .left-0 { left: 0; } .right-0 { right: 0; }
@@ -47,15 +46,14 @@
 
         .p-1 { padding: 0.25rem; } .p-2 { padding: 0.5rem; } .p-4 { padding: 1rem; } .p-6 { padding: 1.5rem; } .p-8 { padding: 2rem; }
         .px-1 { padding-left: 0.25rem; padding-right: 0.25rem; } .px-2 { padding-left: 0.5rem; padding-right: 0.5rem; } .px-4 { padding-left: 1rem; padding-right: 1rem; } .px-8 { padding-left: 2rem; padding-right: 2rem; } .px-12 { padding-left: 3rem; padding-right: 3rem; }
-        .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; } .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; } .py-4 { padding-top: 1rem; padding-bottom: 1rem; } .py-8 { padding-top: 2rem; padding-bottom: 2rem; } .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+        .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; } .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; } .py-4 { padding-top: 1rem; padding-bottom: 1rem; } .py-8 { padding-top: 2rem; padding-bottom: 2rem; } .py-12 { padding-top: 3rem; padding-bottom: 3rem; } .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
         .pt-0\.5 { padding-top: 0.125rem; } .pt-4 { padding-top: 1rem; } .pb-1 { padding-bottom: 0.25rem; } .pb-2 { padding-bottom: 0.5rem; } .pb-4 { padding-bottom: 1rem; } .pb-12 { padding-bottom: 3rem; } .pb-24 { padding-bottom: 6rem; }
         .mx-auto { margin-left: auto; margin-right: auto; } .my-8 { margin-top: 2rem; margin-bottom: 2rem; }
-        .mt-0\.5 { margin-top: 0.125rem; } .mt-1 { margin-top: 0.25rem; } .mt-2 { margin-top: 0.5rem; } .mt-4 { margin-top: 1rem; }
+        .mt-0\.5 { margin-top: 0.125rem; } .mt-1 { margin-top: 0.25rem; } .mt-2 { margin-top: 0.5rem; } .mt-4 { margin-top: 1rem; } .mt-6 { margin-top: 1.5rem; } .mt-8 { margin-top: 2rem; }
         .mb-0\.5 { margin-bottom: 0.125rem; } .mb-1 { margin-bottom: 0.25rem; } .mb-2 { margin-bottom: 0.5rem; } .mb-4 { margin-bottom: 1rem; } .mb-8 { margin-bottom: 2rem; } .mb-10 { margin-bottom: 2.5rem; } .mb-12 { margin-bottom: 3rem; }
         .ml-1 { margin-left: 0.25rem; }
 
-        .w-full { width: 100%; } .h-full { height: 100%; } .w-3 { width: 0.75rem; } .h-3 { height: 0.75rem; } .w-4 { width: 1rem; } .h-4 { height: 1rem; } .w-5 { width: 1.25rem; } .h-5 { height: 1.25rem; } .w-6 { width: 1.5rem; } .w-8 { width: 2rem; } .w-10 { width: 2.5rem; } .h-10 { height: 2.5rem; }
-        .w-16 { width: 4rem; } .h-16 { height: 4rem; } .w-20 { width: 5rem; } .h-14 { height: 3.5rem; } .w-1\/2 { width: 50%; }
+        .w-full { width: 100%; } .h-full { height: 100%; } .w-3 { width: 0.75rem; } .h-3 { height: 0.75rem; } .w-4 { width: 1rem; } .h-4 { height: 1rem; } .w-5 { width: 1.25rem; } .h-5 { height: 1.25rem; } .w-6 { width: 1.5rem; } .h-6 { height: 1.5rem; } .w-8 { width: 2rem; } .h-8 { height: 2rem; } .w-10 { width: 2.5rem; } .h-10 { height: 2.5rem; } .w-16 { width: 4rem; } .h-16 { height: 4rem; } .w-20 { width: 5rem; } .h-14 { height: 3.5rem; } .w-1\/2 { width: 50%; }
         /* スタンプサイズ (90%に調整) */
         .w-24 { width: 5.4rem; } .h-24 { height: 5.4rem; } .w-32 { width: 7.2rem; } .h-20 { height: 4.5rem; }
         .w-\[1px\] { width: 1px; } .h-\[1px\] { height: 1px; } .w-\[150\%\] { width: 150%; } .h-\[150\%\] { height: 150%; }
@@ -71,10 +69,10 @@
         .text-center { text-align: center; } .text-right { text-align: right; } .uppercase { text-transform: uppercase; } .italic { font-style: italic; }
         .leading-tight { line-height: 1.25; } .leading-relaxed { line-height: 1.625; }
         .text-\[6px\] { font-size: 6px; } .text-\[7px\] { font-size: 7px; } .text-\[8px\] { font-size: 8px; } .text-\[9px\] { font-size: 9px; } .text-\[10px\] { font-size: 10px; } .text-\[11px\] { font-size: 11px; }
-        .text-xs { font-size: 0.75rem; line-height: 1rem; } .text-sm { font-size: 0.875rem; line-height: 1.25rem; } .text-lg { font-size: 1.125rem; line-height: 1.75rem; } .text-xl { font-size: 1.25rem; line-height: 1.75rem; } .text-2xl { font-size: 1.5rem; line-height: 2rem; }
-        .tracking-tighter { letter-spacing: -0.05em; } .tracking-tight { letter-spacing: -0.025em; } .tracking-normal { letter-spacing: 0em; } .tracking-wider { letter-spacing: 0.05em; } .tracking-widest { letter-spacing: 0.1em; } .tracking-\[0\.2em\] { letter-spacing: 0.2em; } .tracking-\[0\.3em\] { letter-spacing: 0.3em; }
+        .text-xs { font-size: 0.75rem; line-height: 1rem; } .text-sm { font-size: 0.875rem; line-height: 1.25rem; } .text-base { font-size: 1rem; line-height: 1.5rem; } .text-lg { font-size: 1.125rem; line-height: 1.75rem; } .text-xl { font-size: 1.25rem; line-height: 1.75rem; } .text-2xl { font-size: 1.5rem; line-height: 2rem; } .text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+        .tracking-tighter { letter-spacing: -0.05em; } .tracking-tight { letter-spacing: -0.025em; } .tracking-normal { letter-spacing: 0em; } .tracking-wider { letter-spacing: 0.05em; } .tracking-widest { letter-spacing: 0.1em; } .tracking-\[0\.2em\] { letter-spacing: 0.2em; } .tracking-\[0\.3em\] { letter-spacing: 0.3em; } .tracking-\[0\.4em\] { letter-spacing: 0.4em; }
 
-        .text-white { color: #fff; } .text-\[\#3b3a36\] { color: #3b3a36; } .text-\[\#8c8a82\] { color: #8c8a82; } .text-\[\#b5b3aa\] { color: #b5b3aa; } .text-\[\#5A4D41\] { color: #5A4D41; } .text-\[\#4A5D6B\] { color: #4A5D6B; } .text-\[\#525945\] { color: #525945; } .text-\[\#724840\] { color: #724840; } .text-red-900\/40 { color: rgba(127, 29, 29, 0.4); } .text-red-900\/60 { color: rgba(127, 29, 29, 0.6); }
+        .text-white { color: #fff; } .text-\[\#3b3a36\] { color: #3b3a36; } .text-\[\#8c8a82\] { color: #8c8a82; } .text-\[\#b5b3aa\] { color: #b5b3aa; } .text-\[\#5A4D41\] { color: #5A4D41; } .text-\[\#4A5D6B\] { color: #4A5D6B; } .text-\[\#525945\] { color: #525945; } .text-\[\#724840\] { color: #724840; } .text-\[\#d4af37\] { color: #d4af37; } .text-red-900\/40 { color: rgba(127, 29, 29, 0.4); } .text-red-900\/60 { color: rgba(127, 29, 29, 0.6); }
         .bg-white { background-color: #fff; } .bg-transparent { background-color: transparent; } .bg-\[\#F9F8F6\] { background-color: #F9F8F6; } .bg-\[\#3b3a36\] { background-color: #3b3a36; } .bg-\[\#3b3a36\]\/20 { background-color: rgba(59, 58, 54, 0.2); } .bg-\[\#F9F8F6\]\/80 { background-color: rgba(249, 248, 246, 0.8); }
         .bg-gradient-to-r { background-image: linear-gradient(to right, var(--tw-gradient-stops)); }
         .from-\[rgba\(0\,0\,0\,0\.06\)\] { --tw-gradient-from: rgba(0,0,0,0.06); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0,0,0,0)); }
@@ -82,12 +80,12 @@
         .via-transparent { --tw-gradient-stops: var(--tw-gradient-from), transparent, var(--tw-gradient-to, rgba(0,0,0,0)); }
 
         .border { border-width: 1px; } .border-b { border-bottom-width: 1px; } .border-t { border-top-width: 1px; } .border-l { border-left-width: 1px; } .border-r { border-right-width: 1px; } .border-\[2px\] { border-width: 2px; } .border-\[40px\] { border-width: 40px; } .border-double { border-style: double; }
-        .border-\[\#3b3a36\] { border-color: #3b3a36; } .border-\[\#E5E2DA\] { border-color: #E5E2DA; } .border-\[\#e0ddcd\] { border-color: #e0ddcd; } .border-\[\#DEDCD5\] { border-color: #DEDCD5; } .border-\[\#d5d2c4\] { border-color: #d5d2c4; } .border-\[\#5A4D41\] { border-color: #5A4D41; } .border-\[\#4A5D6B\] { border-color: #4A5D6B; } .border-\[\#525945\] { border-color: #525945; } .border-\[\#724840\] { border-color: #724840; } .border-\[\#E5E2DA\]\/60 { border-color: rgba(229, 226, 218, 0.6); }
-        .rounded-sm { border-radius: 0.125rem; } .rounded-xl { border-radius: 0.75rem; } .rounded-full { border-radius: 9999px; } .rounded-l-sm { border-top-left-radius: 0.125rem; border-bottom-left-radius: 0.125rem; } .rounded-r-xl { border-top-right-radius: 0.75rem; border-bottom-right-radius: 0.75rem; }
-        .shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); } .shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
-        .shadow-\[inset_-15px_0_20px_-15px_rgba\(0\,0\,0\,0\.05\)\] { box-shadow: inset -15px 0 20px -15px rgba(0,0,0,0.05); } .shadow-\[inset_15px_0_20px_-15px_rgba\(0\,0\,0\,0\.05\)\] { box-shadow: inset 15px 0 20px -15px rgba(0,0,0,0.05); }
+        .border-\[\#3b3a36\] { border-color: #3b3a36; } .border-\[\#E5E2DA\] { border-color: #E5E2DA; } .border-\[\#e0ddcd\] { border-color: #e0ddcd; } .border-\[\#DEDCD5\] { border-color: #DEDCD5; } .border-\[\#d5d2c4\] { border-color: #d5d2c4; } .border-\[\#5A4D41\] { border-color: #5A4D41; } .border-\[\#4A5D6B\] { border-color: #4A5D6B; } .border-\[\#525945\] { border-color: #525945; } .border-\[\#724840\] { border-color: #724840; } .border-\[\#E5E2DA\]\/60 { border-color: rgba(229, 226, 218, 0.6); } .border-\[\#d4af37\] { border-color: #d4af37; } .border-transparent { border-color: transparent; }
+        .rounded-sm { border-radius: 0.125rem; } .rounded-md { border-radius: 0.375rem; } .rounded-xl { border-radius: 0.75rem; } .rounded-full { border-radius: 9999px; } .rounded-l-sm { border-top-left-radius: 0.125rem; border-bottom-left-radius: 0.125rem; } .rounded-r-xl { border-top-right-radius: 0.75rem; border-bottom-right-radius: 0.75rem; }
+        .shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); } .shadow-md { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); } .shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
+        .shadow-\[inset_-15px_0_20px_-15px_rgba\(0\,0\,0\,0\.05\)\] { box-shadow: inset -15px 0 20px -15px rgba(0,0,0,0.05); } .shadow-\[inset_15px_0_20px_-15px_rgba\(0\,0\,0\,0\.05\)\] { box-shadow: inset 15px 0 20px -15px rgba(0,0,0,0.05); } .shadow-\[inset_15px_0_20px_-15px_rgba\(0\,0\,0\,0\.3\)\] { box-shadow: inset 15px 0 20px -15px rgba(0,0,0,0.3); } .shadow-\[inset_-15px_0_20px_-15px_rgba\(0\,0\,0\,0\.3\)\] { box-shadow: inset -15px 0 20px -15px rgba(0,0,0,0.3); }
 
-        .opacity-0 { opacity: 0; } .opacity-40 { opacity: 0.4; } .opacity-50 { opacity: 0.5; } .opacity-60 { opacity: 0.6; } .opacity-70 { opacity: 0.7; } .opacity-80 { opacity: 0.8; } .opacity-\[0\.02\] { opacity: 0.02; }
+        .opacity-0 { opacity: 0; } .opacity-40 { opacity: 0.4; } .opacity-50 { opacity: 0.5; } .opacity-60 { opacity: 0.6; } .opacity-70 { opacity: 0.7; } .opacity-80 { opacity: 0.8; } .opacity-90 { opacity: 0.9; } .opacity-100 { opacity: 1; } .opacity-\[0\.02\] { opacity: 0.02; }
         .mix-blend-multiply { mix-blend-mode: multiply; } .blur-xl { filter: blur(24px); } .backdrop-blur-sm { backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); } .backdrop-blur-md { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
         .pointer-events-none { pointer-events: none; } .overflow-hidden { overflow: hidden; } .overflow-x-hidden { overflow-x: hidden; } .appearance-none { appearance: none; } 
         .cursor-pointer { cursor: pointer; } 
@@ -95,7 +93,7 @@
         
         .-translate-x-1\/2 { transform: translateX(-50%); } .-translate-y-1\/2 { transform: translateY(-50%); }
         .gap-0\.5 { gap: 0.125rem; } .gap-1 { gap: 0.25rem; } .gap-2 { gap: 0.5rem; } .gap-3 { gap: 0.75rem; } .gap-4 { gap: 1rem; } .gap-6 { gap: 1.5rem; } .gap-12 { gap: 3rem; }
-        .space-y-4 > :not([hidden]) ~ :not([hidden]) { margin-top: 1rem; } .space-y-6 > :not([hidden]) ~ :not([hidden]) { margin-top: 1.5rem; } .space-y-12 > :not([hidden]) ~ :not([hidden]) { margin-top: 3rem; }
+        .space-y-4 > :not([hidden]) ~ :not([hidden]) { margin-top: 1rem; } .space-y-6 > :not([hidden]) ~ :not([hidden]) { margin-top: 1.5rem; } .space-y-8 > :not([hidden]) ~ :not([hidden]) { margin-top: 2rem; } .space-y-12 > :not([hidden]) ~ :not([hidden]) { margin-top: 3rem; }
 
         .transition-all { transition-property: all; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
         .transition-colors { transition-property: color, background-color, border-color, fill, stroke; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
@@ -105,11 +103,11 @@
         .animate-in { animation-name: fadeIn; animation-duration: 0.5s; } .fade-in { animation-name: fadeIn; animation-duration: 0.5s; } .zoom-in-95 { animation-name: zoomIn; animation-duration: 0.3s; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } } @keyframes zoomIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
 
-        .hover\:bg-\[\#3b3a36\]:hover { background-color: #3b3a36; } .hover\:bg-transparent:hover { background-color: transparent; } .hover\:text-white:hover { color: #fff; } .hover\:text-\[\#3b3a36\]:hover { color: #3b3a36; } .hover\:text-red-900:hover { color: #7f1d1d; }
+        .hover\:bg-\[\#3b3a36\]:hover { background-color: #3b3a36; } .hover\:bg-transparent:hover { background-color: transparent; } .hover\:text-white:hover { color: #fff; } .hover\:text-\[\#3b3a36\]:hover { color: #3b3a36; } .hover\:text-red-900:hover { color: #7f1d1d; } .hover\:border-\[\#3b3a36\]:hover { border-color: #3b3a36; } .hover\:scale-110:hover { transform: scale(1.1); }
         .disabled\:opacity-20:disabled { opacity: 0.2; } .disabled\:opacity-30:disabled { opacity: 0.3; }
 
         @media (min-width: 640px) {
-            .sm\:w-4 { width: 1rem; } .sm\:h-4 { height: 1rem; }
+            .sm\:w-4 { width: 1rem; } .sm\:h-4 { height: 1rem; } .sm\:w-12 { width: 3rem; } .sm\:h-12 { height: 3rem; }
             .sm\:w-20 { width: 5rem; } .sm\:h-20 { height: 5rem; } .sm\:w-24 { width: 6rem; } .sm\:h-16 { height: 4rem; }
             /* スタンプサイズ (90%に調整) */
             .sm\:w-32 { width: 7.2rem; } .sm\:h-32 { height: 7.2rem; } .sm\:w-36 { width: 8.1rem; } .sm\:h-24 { height: 5.4rem; }
@@ -123,7 +121,7 @@
             .sm\:gap-1 { gap: 0.25rem; } .sm\:gap-4 { gap: 1rem; } .sm\:gap-6 { gap: 1.5rem; }
         }
         @media (min-width: 768px) {
-            .md\:w-5 { width: 1.25rem; } .md\:h-5 { height: 1.25rem; }
+            .md\:w-5 { width: 1.25rem; } .md\:h-5 { height: 1.25rem; } .md\:w-16 { width: 4rem; } .md\:h-16 { height: 4rem; }
             .md\:w-28 { width: 7rem; } .md\:h-28 { height: 7rem; } .md\:w-32 { width: 8rem; } .md\:h-24 { height: 6rem; } .md\:h-20 { height: 5rem; } .md\:w-12 { width: 3rem; } .md\:h-12 { height: 3rem; }
             /* スタンプサイズ (90%に調整) */
             .md\:w-44 { width: 9.9rem; } .md\:h-44 { height: 9.9rem; } .md\:w-48 { width: 10.8rem; } .md\:h-32 { height: 7.2rem; } .md\:h-36 { height: 8.1rem; }
@@ -167,6 +165,20 @@
         const US_STATES = ["New York", "California", "Hawaii", "Florida", "Texas", "Illinois", "Pennsylvania", "Ohio", "Georgia", "North Carolina", "Michigan", "New Jersey", "Virginia", "Washington", "Arizona", "Massachusetts", "Tennessee", "Indiana", "Missouri", "Maryland", "Wisconsin", "Colorado", "Minnesota", "South Carolina", "Alabama", "Louisiana", "Kentucky", "Oregon", "Oklahoma", "Connecticut", "Utah", "Iowa", "Nevada", "Arkansas", "Mississippi", "Kansas", "New Mexico", "Nebraska", "Idaho", "West Virginia", "Others"];
         const CA_PROVINCES = ["Ontario", "Quebec", "British Columbia", "Alberta", "Manitoba", "Saskatchewan", "Nova Scotia", "New Brunswick", "Newfoundland and Labrador", "Prince Edward Island", "Northwest Territories", "Nunavut", "Yukon"];
 
+        const COVER_COLORS = [
+            { id: 'charcoal', value: '#3b3a36', name: 'Charcoal' },
+            { id: 'navy', value: '#1c2841', name: 'Navy' },
+            { id: 'wine', value: '#4a1c1c', name: 'Wine' },
+            { id: 'olive', value: '#2b331f', name: 'Olive' },
+            { id: 'leather', value: '#4a2c11', name: 'Leather' },
+        ];
+
+        const COVER_DESIGNS = [
+            { id: 'plain', name: 'Plain' },
+            { id: 'logo', name: 'Minimal' },
+            { id: 'emblem', name: 'Emblem' },
+        ];
+
         const formatDate = (dateString) => {
             const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
             const d = new Date(dateString);
@@ -183,13 +195,13 @@
         };
 
         const generateStampStyle = () => {
-            // ★ スタンプ枠の種類を1:1のもののみに限定
-            const types = ['circle', 'circle-double', 'square', 'square-double', 'rounded', 'rounded-double'];
+            // 四角や横長を廃止し、1:1の形のみに限定
+            const types = ['circle', 'circle-single', 'square', 'square-double', 'rounded', 'rounded-double'];
             const colors = ['border-[#3b3a36] text-[#3b3a36]', 'border-[#5A4D41] text-[#5A4D41]', 'border-[#4A5D6B] text-[#4A5D6B]', 'border-[#525945] text-[#525945]', 'border-[#724840] text-[#724840]'];
             const decorations = ['none', 'airplane', 'waves', 'compass', 'none'];
             return {
                 type: types[Math.floor(Math.random() * types.length)],
-                rotation: 0, // ★ 角度の傾きをなくし、常に0度に固定
+                rotation: 0,
                 colorClass: colors[Math.floor(Math.random() * colors.length)],
                 decoration: decorations[Math.floor(Math.random() * decorations.length)],
             };
@@ -215,21 +227,23 @@
 
         const Stamp = ({ record }) => {
             const [isHovered, setIsHovered] = useState(false);
-            const { type, rotation, colorClass } = record.style;
+            const { type, colorClass } = record.style;
+            
+            // 過去データに横長(rect)が含まれていた場合は1:1のsquareに補正する
+            const safeType = type.includes('rect') ? type.replace('rect', 'square') : type;
             const originalDec = record.style.decoration || getDecorationFromId(record.id);
-            // 過去データにsunが含まれていた場合はnoneに補正する安全処理
             const decoration = originalDec === 'sun' ? 'none' : originalDec;
             
-            // ★ 全て1:1の正方形サイズをベースに形を切り替え
+            // 1:1に固定
             let shapeClass = "w-24 h-24 sm:w-32 sm:h-32 md:w-44 md:h-44 flex flex-col justify-center items-center ";
             
-            if (type.includes('circle')) {
+            if (safeType.includes('circle')) {
                 shapeClass += "rounded-full ";
-            } else if (type.includes('rounded')) {
+            } else if (safeType.includes('rounded')) {
                 shapeClass += "rounded-xl ";
             }
 
-            if (type.includes('double')) {
+            if (safeType.includes('double')) {
                 shapeClass += "border-[2px] md:border-[3px] border-double";
             } else {
                 shapeClass += "border md:border-2";
@@ -244,8 +258,7 @@
             return (
                 <div 
                     className="relative flex justify-center items-center p-2 sm:p-4 transition-transform duration-500 select-none" 
-                    // rotation は常に 0 が適用される
-                    style={{ transform: `rotate(${rotation || 0}deg) scale(${isHovered ? 1.05 : 1}) translateZ(0)` }}
+                    style={{ transform: `rotate(0deg) scale(${isHovered ? 1.05 : 1}) translateZ(0)` }}
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
                     onContextMenu={(e) => e.preventDefault()}
@@ -266,7 +279,7 @@
                         <h3 className={`font-bold leading-tight uppercase px-1 ${fontSizeClass}`}>{record.country}</h3>
                         {record.subRegion && <span className="text-[9px] sm:text-[11px] md:text-xs italic mt-0.5 sm:mt-1 border-t border-current pt-0.5 sm:pt-1 px-1 sm:px-2">{record.subRegion}</span>}
                         
-                        {(!type.includes('circle')) && decoration && decoration !== 'none' && decoration !== 'waves' && (
+                        {(!safeType.includes('circle')) && decoration && decoration !== 'none' && decoration !== 'waves' && (
                             <div className="mt-1 sm:mt-1.5 mb-0.5 opacity-60 flex justify-center w-full">
                                 <Icon name={decoration} strokeWidth={1.2} className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" />
                             </div>
@@ -336,8 +349,37 @@
             );
         };
 
+        // カバーデザインを描画するコンポーネント
+        const CoverDesign = ({ color, design }) => {
+            if (design === 'plain') return null;
+
+            return (
+                <div className="absolute inset-0 flex flex-col justify-center items-center text-[#d4af37] opacity-80 text-center mix-blend-plus-lighter pointer-events-none p-6">
+                    {design === 'emblem' && (
+                        <div className="flex flex-col items-center">
+                            <svg className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 mb-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="2" y1="12" x2="22" y2="12"/>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                            </svg>
+                            <h1 className="text-lg sm:text-xl md:text-2xl tracking-[0.4em] uppercase font-light mb-2">Passport</h1>
+                            <p className="text-[6px] sm:text-[7px] md:text-[8px] tracking-widest uppercase opacity-70 font-sans">STALOG Personal Journal</p>
+                        </div>
+                    )}
+                    {design === 'logo' && (
+                        <div className="flex flex-col items-center">
+                            <h1 className="text-xl sm:text-2xl md:text-3xl tracking-[0.4em] uppercase font-light mb-2 border-b border-current pb-2 px-4">STALOG</h1>
+                            <p className="text-[6px] sm:text-[7px] md:text-[8px] tracking-widest uppercase opacity-70 font-sans mt-2">Personal Journal</p>
+                        </div>
+                    )}
+                </div>
+            );
+        };
+
         function App() {
             const [records, setRecords] = useState([]);
+            const [coverColor, setCoverColor] = useState(COVER_COLORS[0].value);
+            const [coverDesign, setCoverDesign] = useState(COVER_DESIGNS[2].id);
             const [isLoaded, setIsLoaded] = useState(false);
             const [isModalOpen, setIsModalOpen] = useState(false);
             const [editingRecord, setEditingRecord] = useState(null);
@@ -347,7 +389,7 @@
             const [subRegion, setSubRegion] = useState('');
             const [date, setDate] = useState(() => new Date().toISOString().split('T')[0]);
             
-            const [currentPage, setCurrentPage] = useState(0);
+            const [currentPage, setCurrentPage] = useState(0); // 0は表紙
             const [flipState, setFlipState] = useState(null);
             const [activeTab, setActiveTab] = useState('journal');
             const fileInputRef = useRef(null);
@@ -373,11 +415,18 @@
             }, [activeTab, isModalOpen]);
 
             useEffect(() => {
-                const saved = localStorage.getItem('zara-travel-log');
-                if (saved) {
-                    const parsed = JSON.parse(saved);
-                    setRecords(sortRecordsDesc(parsed));
+                const savedLog = localStorage.getItem('zara-travel-log');
+                if (savedLog) {
+                    setRecords(sortRecordsDesc(JSON.parse(savedLog)));
                 }
+                
+                const savedCover = localStorage.getItem('stalog-cover-settings');
+                if (savedCover) {
+                    const { color, design } = JSON.parse(savedCover);
+                    if (color) setCoverColor(color);
+                    if (design) setCoverDesign(design);
+                }
+
                 setIsLoaded(true);
                 
                 const loader = document.getElementById('initial-loader');
@@ -386,6 +435,12 @@
                     setTimeout(() => loader.remove(), 500);
                 }
             }, []);
+
+            const saveCoverSettings = (color, design) => {
+                setCoverColor(color);
+                setCoverDesign(design);
+                localStorage.setItem('stalog-cover-settings', JSON.stringify({ color, design }));
+            };
 
             const openNewModal = () => {
                 setEditingRecord(null);
@@ -442,7 +497,7 @@
                     const newRecords = sortRecordsDesc([newRecord, ...records]);
                     setRecords(newRecords);
                     localStorage.setItem('zara-travel-log', JSON.stringify(newRecords));
-                    setCurrentPage(0); 
+                    setCurrentPage(1); // 新規追加したら表紙をめくって1ページ目へ
                     setActiveTab('journal');
                 }
                 
@@ -486,7 +541,10 @@
                 e.target.value = null;
             };
 
-            const totalPages = Math.max(1, Math.ceil(records.length / ITEMS_PER_SPREAD));
+            // ページ数は表紙(0ページ目)を含めるため +1 する
+            const totalStampPages = Math.max(1, Math.ceil(records.length / ITEMS_PER_SPREAD));
+            const totalPages = totalStampPages + 1; 
+
             const nextPage = () => {
                 if (currentPage >= totalPages - 1 || flipState) return;
                 setFlipState({ direction: 'next', from: currentPage, to: currentPage + 1 });
@@ -515,12 +573,18 @@
             ];
 
             const PageContent = ({ pageIndex }) => {
-                const start = pageIndex * ITEMS_PER_SPREAD;
+                // 0ページ目は表紙
+                if (pageIndex === 0) {
+                    return <CoverDesign color={coverColor} design={coverDesign} />;
+                }
+
+                // 1ページ目以降がスタンプ
+                const start = (pageIndex - 1) * ITEMS_PER_SPREAD;
                 const pageRecords = records.slice(start, start + ITEMS_PER_SPREAD);
 
                 return (
                     <div className="absolute inset-0 overflow-hidden w-full h-full pointer-events-none">
-                        {pageRecords.length === 0 && pageIndex === 0 ? (
+                        {pageRecords.length === 0 && pageIndex === 1 ? (
                             <div className="absolute inset-0 flex flex-col justify-center items-center text-[#8c8a82] opacity-50 px-4 text-center">
                                 <p className="text-xs tracking-widest uppercase mb-2">No entries yet</p>
                                 <p className="text-[10px] font-sans mb-1">Click + to add a stamp.</p>
@@ -541,10 +605,25 @@
                 );
             };
 
+            // ページごとに背景色と影の深さを切り替える関数
+            const getPageBackgroundStyle = (index) => {
+                if (index === 0) {
+                    return { backgroundColor: coverColor, className: "shadow-[inset_15px_0_20px_-15px_rgba(0,0,0,0.3)]" };
+                }
+                return { backgroundColor: '#fff', className: "bg-white shadow-[inset_15px_0_20px_-15px_rgba(0,0,0,0.05)]" };
+            };
+            const getPageBackStyle = (index) => {
+                if (index === 0) {
+                    // 表紙の裏は白にする
+                    return { backgroundColor: '#fff', className: "bg-white border-l border-[#e0ddcd] shadow-[inset_-15px_0_20px_-15px_rgba(0,0,0,0.05)]" };
+                }
+                return { backgroundColor: '#fff', className: "bg-white border-l border-[#e0ddcd] shadow-[inset_-15px_0_20px_-15px_rgba(0,0,0,0.05)]" };
+            };
+
             if (!isLoaded) return null;
 
             return (
-                <div className="min-h-screen pb-24 flex flex-col items-center py-8 px-4 relative overflow-x-hidden animate-in fade-in duration-500">
+                <div className="min-h-screen pb-24 flex flex-col items-center px-4 relative overflow-x-hidden animate-in fade-in duration-500">
                     <div className="fixed inset-0 pointer-events-none overflow-hidden opacity-[0.02] flex justify-center items-center z-0">
                          <div className="w-[150%] h-[150%] border-[40px] border-[#3b3a36] rounded-full mix-blend-multiply blur-xl"></div>
                     </div>
@@ -553,12 +632,16 @@
 
                     {activeTab === 'journal' && (
                         <div className="w-full max-w-5xl flex flex-col flex-grow relative z-10 justify-center">
-                            <div className="relative w-full px-2 sm:px-8 flex items-center justify-center flex-grow">
-                                <div className="w-full max-w-[360px] sm:max-w-[420px] md:max-w-[480px] aspect-[3/4] min-h-[450px] max-h-[75vh] bg-white shadow-2xl rounded-r-xl rounded-l-sm relative border border-[#E5E2DA] border-l-[#d5d2c4] overflow-hidden mx-auto cursor-pointer" 
+                            {/* 手帳画面での上部ヘッダー（Personal Journal / STALOG）を完全削除 */}
+                            <div className="relative w-full px-2 sm:px-8 flex items-center justify-center flex-grow py-4">
+                                <div className="w-full max-w-[360px] sm:max-w-[420px] md:max-w-[480px] aspect-[3/4] min-h-[450px] max-h-[75vh] bg-white shadow-2xl rounded-r-xl rounded-l-sm relative border border-[#E5E2DA] border-l-[#d5d2c4] overflow-hidden mx-auto cursor-pointer transition-colors duration-500" 
                                     onClick={handleNotebookClick}
                                 >
+                                    
                                     <div className="absolute inset-0 z-10" style={{ transformStyle: 'preserve-3d' }}>
-                                        <div className="absolute inset-0 bg-white shadow-[inset_15px_0_20px_-15px_rgba(0,0,0,0.05)]">
+                                        <div className={`absolute inset-0 transition-colors duration-500 ${getPageBackgroundStyle(flipState?.direction === 'next' ? flipState.to : (flipState?.direction === 'prev' ? flipState.from : currentPage)).className}`}
+                                             style={{ backgroundColor: getPageBackgroundStyle(flipState?.direction === 'next' ? flipState.to : (flipState?.direction === 'prev' ? flipState.from : currentPage)).backgroundColor }}
+                                        >
                                             <PageContent pageIndex={flipState?.direction === 'next' ? flipState.to : (flipState?.direction === 'prev' ? flipState.from : currentPage)} />
                                         </div>
                                     </div>
@@ -567,18 +650,18 @@
                                         <div className="absolute inset-0 flex z-30 pointer-events-none perspective-[1200px]">
                                             {flipState.direction === 'next' ? (
                                                 <div className="absolute inset-0 page-flip-next">
-                                                    <div className="page-front bg-white shadow-[inset_15px_0_20px_-15px_rgba(0,0,0,0.05)]">
+                                                    <div className={`page-front ${getPageBackgroundStyle(flipState.from).className}`} style={{ backgroundColor: getPageBackgroundStyle(flipState.from).backgroundColor }}>
                                                         <PageContent pageIndex={flipState.from} />
                                                     </div>
-                                                    <div className="page-back bg-white border-l border-[#e0ddcd] shadow-[inset_-15px_0_20px_-15px_rgba(0,0,0,0.05)]">
+                                                    <div className={`page-back ${getPageBackStyle(flipState.from).className}`} style={{ backgroundColor: getPageBackStyle(flipState.from).backgroundColor }}>
                                                     </div>
                                                 </div>
                                             ) : (
                                                 <div className="absolute inset-0 page-flip-prev">
-                                                    <div className="page-front bg-white shadow-[inset_15px_0_20px_-15px_rgba(0,0,0,0.05)]">
+                                                    <div className={`page-front ${getPageBackgroundStyle(flipState.to).className}`} style={{ backgroundColor: getPageBackgroundStyle(flipState.to).backgroundColor }}>
                                                         <PageContent pageIndex={flipState.to} />
                                                     </div>
-                                                    <div className="page-back bg-white border-l border-[#e0ddcd] shadow-[inset_-15px_0_20px_-15px_rgba(0,0,0,0.05)]">
+                                                    <div className={`page-back ${getPageBackStyle(flipState.to).className}`} style={{ backgroundColor: getPageBackStyle(flipState.to).backgroundColor }}>
                                                     </div>
                                                 </div>
                                             )}
@@ -610,7 +693,7 @@
                     )}
 
                     {activeTab === 'settings' && (
-                        <div className="w-full max-w-5xl flex flex-col flex-grow relative z-10 justify-center animate-in fade-in duration-500">
+                        <div className="w-full max-w-5xl flex flex-col flex-grow relative z-10 justify-center animate-in fade-in duration-500 py-8">
                             <div className="w-full max-w-4xl bg-white shadow-2xl p-6 sm:p-12 border border-[#E5E2DA] mx-auto">
                                 <header className="mb-12 mt-4 text-center">
                                     <p className="text-[7px] md:text-[8px] tracking-[0.3em] uppercase text-[#8c8a82] mb-2 font-sans">Options</p>
@@ -618,7 +701,43 @@
                                     <div className="w-8 h-[1px] bg-[#3b3a36] mx-auto mt-4"></div>
                                 </header>
                                 <div className="max-w-md mx-auto w-full space-y-8 pb-4">
+                                    
+                                    {/* ★ 新規追加: カバー設定セクション */}
                                     <section className="space-y-6">
+                                        <h3 className="text-[10px] uppercase tracking-[0.2em] text-[#8c8a82] border-b border-[#E5E2DA] pb-2 font-sans">Cover Customization</h3>
+                                        <div className="space-y-6">
+                                            <div>
+                                                <label className="block text-[10px] uppercase tracking-widest text-[#8c8a82] mb-3 font-sans">Color</label>
+                                                <div className="flex gap-4">
+                                                    {COVER_COLORS.map(c => (
+                                                        <button 
+                                                            key={c.id} 
+                                                            onClick={() => saveCoverSettings(c.value, coverDesign)}
+                                                            className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 ${coverColor === c.value ? 'border-[#d4af37] scale-110' : 'border-transparent'} hover:scale-110 transition-all`}
+                                                            style={{ backgroundColor: c.value }}
+                                                            title={c.name}
+                                                        />
+                                                    ))}
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <label className="block text-[10px] uppercase tracking-widest text-[#8c8a82] mb-3 font-sans">Design</label>
+                                                <div className="grid grid-cols-3 gap-2">
+                                                    {COVER_DESIGNS.map(d => (
+                                                        <button
+                                                            key={d.id}
+                                                            onClick={() => saveCoverSettings(coverColor, d.id)}
+                                                            className={`py-2 text-[8px] sm:text-[9px] uppercase tracking-widest font-sans border ${coverDesign === d.id ? 'border-[#3b3a36] bg-[#3b3a36] text-white' : 'border-[#E5E2DA] text-[#8c8a82] hover:border-[#3b3a36]'} transition-colors`}
+                                                        >
+                                                            {d.name}
+                                                        </button>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+
+                                    <section className="space-y-6 pt-4">
                                         <h3 className="text-[10px] uppercase tracking-[0.2em] text-[#8c8a82] border-b border-[#E5E2DA] pb-2 font-sans">Data Management</h3>
                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                             <button onClick={handleExport} className="flex items-center justify-center gap-3 py-3 border border-[#3b3a36] text-[#3b3a36] uppercase tracking-widest text-[10px] font-sans hover:bg-[#3b3a36] hover:text-white transition-all duration-500"><Icon name="download" size={14} />Backup</button>
