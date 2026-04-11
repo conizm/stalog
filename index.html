@@ -177,7 +177,7 @@
                         />
                         <div className="relative z-10 flex flex-col items-center justify-center w-full h-full">
                             <span className="text-[length:clamp(7px,1.8vw,10px)] sm:text-[9px] md:text-[11px] tracking-widest uppercase mb-0.5 sm:mb-1 opacity-70 font-sans">Visas</span>
-                            <h3 className={`font-bold leading-tight uppercase px-1 pb-0.5 sm:pb-1 ${fontSizeClass}`}>{record.country}</h3>
+                            <h3 className={`font-bold leading-tight uppercase px-1 pb-0.5 sm:pb-1 border-b border-current ${fontSizeClass}`}>{record.country}</h3>
                             {record.subRegion && <span className="text-[length:clamp(8px,2vw,11px)] sm:text-[11px] md:text-xs italic mt-0.5 sm:mt-1 px-1 sm:px-2">{record.subRegion}</span>}
                             <span className="text-[length:clamp(7px,1.8vw,10px)] sm:text-[9px] md:text-[11px] tracking-wider mt-1 sm:mt-2 font-mono">{formatDate(record.date)}</span>
                         </div>
@@ -289,6 +289,9 @@
             const [flipState, setFlipState] = useState(null);
             const [activeTab, setActiveTab] = useState('journal');
             const fileInputRef = useRef(null);
+            const notebookTouchStartX = useRef(null);
+            const notebookTouchEndX = useRef(null);
+            const isSwiping = useRef(false);
 
             const ITEMS_PER_SPREAD = 6;
 
@@ -466,7 +469,39 @@
                 setTimeout(() => { setCurrentPage(p => p - 1); setFlipState(null); }, 600);
             };
 
+            const handleNotebookTouchStart = (e) => {
+                notebookTouchStartX.current = e.touches[0].clientX;
+                notebookTouchEndX.current = null;
+                isSwiping.current = false;
+            };
+
+            const handleNotebookTouchMove = (e) => {
+                notebookTouchEndX.current = e.touches[0].clientX;
+            };
+
+            const handleNotebookTouchEnd = () => {
+                if (notebookTouchStartX.current === null || notebookTouchEndX.current === null) return;
+                const distance = notebookTouchEndX.current - notebookTouchStartX.current;
+                
+                // 40px以上のスワイプでページをめくる
+                if (distance < -40) {
+                    isSwiping.current = true;
+                    nextPage(); // 右から左スワイプで次のページへ
+                } else if (distance > 40) {
+                    isSwiping.current = true;
+                    prevPage(); // 左から右スワイプで前のページへ
+                }
+
+                notebookTouchStartX.current = null;
+                notebookTouchEndX.current = null;
+            };
+
             const handleNotebookClick = (e) => {
+                // スワイプ操作が実行された場合はクリック判定を無視する
+                if (isSwiping.current) {
+                    isSwiping.current = false;
+                    return;
+                }
                 const rect = e.currentTarget.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 if (x > rect.width / 2) {
@@ -549,6 +584,9 @@
                             <div className="relative w-full px-2 sm:px-8 flex items-center justify-center flex-grow py-4">
                                 <div className={`w-[88vw] max-w-[380px] sm:max-w-[420px] md:max-w-[480px] aspect-[3/4] min-h-[450px] max-h-[75vh] bg-white shadow-2xl rounded-r-xl rounded-l-sm relative border border-[#E5E2DA] border-l-[#d5d2c4] overflow-hidden mx-auto cursor-pointer`} 
                                     onClick={handleNotebookClick}
+                                    onTouchStart={handleNotebookTouchStart}
+                                    onTouchMove={handleNotebookTouchMove}
+                                    onTouchEnd={handleNotebookTouchEnd}
                                 >
                                     
                                     <div className="absolute inset-0 z-10" style={{ transformStyle: 'preserve-3d' }}>
