@@ -314,7 +314,7 @@
             }, [activeTab, isModalOpen]);
 
             useEffect(() => {
-                const savedLog = localStorage.getItem('zara-travel-log');
+                const savedLog = localStorage.getItem('logbird-travel-log');
                 if (savedLog) {
                     setRecords(sortRecordsDesc(JSON.parse(savedLog)));
                 }
@@ -394,7 +394,7 @@
                     };
                     const newRecords = sortRecordsDesc(records.map(r => r.id === editingRecord.id ? updatedRecord : r));
                     setRecords(newRecords);
-                    localStorage.setItem('zara-travel-log', JSON.stringify(newRecords));
+                    localStorage.setItem('logbird-travel-log', JSON.stringify(newRecords));
                 } else {
                     const generatedStyle = generateStampStyle();
                     if (stampType !== 'random') {
@@ -409,7 +409,7 @@
                     };
                     const newRecords = sortRecordsDesc([newRecord, ...records]);
                     setRecords(newRecords);
-                    localStorage.setItem('zara-travel-log', JSON.stringify(newRecords));
+                    localStorage.setItem('logbird-travel-log', JSON.stringify(newRecords));
                     setCurrentPage(1);
                     setActiveTab('journal');
                 }
@@ -423,7 +423,7 @@
             const handleRemove = (id) => {
                 const filtered = records.filter(r => r.id !== id);
                 setRecords(filtered);
-                localStorage.setItem('zara-travel-log', JSON.stringify(filtered));
+                localStorage.setItem('logbird-travel-log', JSON.stringify(filtered));
             };
 
             const handleExport = () => {
@@ -445,7 +445,7 @@
                             if (confirm("既存のデータを上書きしますか？")) {
                                 const sorted = sortRecordsDesc(imported);
                                 setRecords(sorted);
-                                localStorage.setItem('zara-travel-log', JSON.stringify(sorted));
+                                localStorage.setItem('logbird-travel-log', JSON.stringify(sorted));
                                 setCurrentPage(0); setActiveTab('journal');
                             }
                         }
